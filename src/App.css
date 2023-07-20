@@ -1,0 +1,66 @@
+body{
+  background-color: #8f8b8b;
+}
+.div-navbar{
+  display: flex;
+  padding-left: 45px; /*This padding is for the content giant*/
+  background-color: #ffffff;
+  height: 80px;
+}
+
+.ul-navbar_center,.ul-navbar_right{
+  display: flex;  /* to make the navbar horizontal, converting the lists from vertical to horizontal horizontal */
+  list-style: none; /* to remove the bulletin ponits */  
+  margin-left: auto; /*Will push the list items to right*/
+}
+
+.ul-navbar_center{
+  padding: 5px; /* what is space between */
+  padding-top: 10px;
+  margin-right: 0px;
+}
+.ul-navbar_right{
+  padding: 5px; /* what is space between */
+  margin-right: 60px;
+}
+.ul-navbar_center li{
+  padding-left: 50px; /* to give the space between the lists */
+  color: #799a84;
+}
+.ul-navbar_right li{
+  padding-left: 28px; /* to give the space between the lists */
+
+}
+.dashboard-image{
+  height: 25px;
+}
+.chatoption-image{
+  height: 30px;
+}
+#thebell-icon{
+font-size: 30px; /*To increase the size of the icon*/
+}
+#theprofile-icon{
+font-size: 26px;
+}
+.navbar-login-button{
+  background-color: #799a84;
+  color: white;
+  border: none;
+  height: 35px;
+  width: 100px;
+  border-radius: 12px;
+}
+.search-text{
+  height: 34px;
+  border-radius: 12px;
+  border: 1px solid grey;
+}
+.name-in-logo{
+  font-family: 'Lumanosimo', cursive;
+  font-size: 40px;
+  color: #516759;
+  margin-top: 0;
+  padding-top: 9.5px;
+}
+
