@@ -1,0 +1,25 @@
+.container {
+    display: flex; /* Use Flexbox for the two-column layout */
+  }
+  
+  .floatable-column {
+     /* Take up the remaining space */
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin-top: 40px;
+  }
+  
+  .static-column {
+    width: 300px; /* Set a fixed width for the static column */
+    background-color: #e0e0e0;
+    padding: 10px;
+    margin-left: 100px;
+    margin-top: 40px;
+  }
+
+
+  .interest{
+    height: 100px;
+    background-color: white;
+  }
+  

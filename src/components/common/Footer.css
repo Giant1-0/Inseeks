@@ -1,0 +1,95 @@
+
+.footer {
+    background-color: #f0f0f0;
+    padding: 20px;
+    text-align: center;
+    bottom: 0;
+  }
+  
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .footer-column {
+    flex-basis: 20%;
+    margin-bottom: 20px;
+  }
+  
+  h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  
+  p {
+    margin: 0;
+    font-size: 14px;
+  }
+  
+  .social-icons {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .social-icons a {
+    color: #000000;
+    font-size: 20px;
+    margin: 2px 7px;
+    text-decoration: none;
+  }
+
+  .footer_title{
+    font-family: 'Lumanosimo', cursive;
+    font-size: 20px;
+    color: #516759;
+  }
+
+  .footer-bottom{
+    margin-top: 30px;
+  }
+
+  .icon{
+    height: 50px;
+    transition: transform .2s;
+  }
+
+  .icon:hover{
+    transform: scale(1.4);
+  }
+
+  .footer-colum{
+    padding-right: 20px;
+  }
+
+  .nav-links{
+    padding-left: 30px;
+    text-align: justify;
+  }
+
+  ul{
+    list-style: none;
+  }
+  
+  /* Add responsive styles for different screen sizes */
+  
+  /* For smaller devices, stack the columns vertically */
+  @media screen and (max-width: 768px) {
+    .footer-content {
+      flex-direction: column;
+    }
+    
+    .footer-column {
+      flex-basis: 100%;
+    }
+
+    .nav-links{
+      flex-basis: 100%;
+      text-align: center;
+    }
+
+    /* .footer{
+      position: fixed;
+    } */
+  }
+  
