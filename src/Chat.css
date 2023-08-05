@@ -1,0 +1,122 @@
+.chat{
+    height: 120vh;
+}
+
+.header_chat{
+    height: 8rem;
+    width: 40rem;
+    background-color: #8cd6b1;
+    border-radius: 20px;
+    position: relative;
+    left: 350px;
+    top: 20px;
+    border: 3px solid #23261f;
+    text-align: center;
+    max-width: 100%;
+    padding-top: 10px;
+}
+
+
+.input_form{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid #8cd6b1;
+    background-color: #8F8B8B;
+    resize: both;
+  }
+
+.form_chat{
+    padding-top: 20px;
+    width: 40rem;
+    color: #ffffff;
+    position: relative;
+    left: 350px;
+    top: 20px;
+    max-width: 100%;
+
+}
+
+.btn_form{
+    margin-top: 20px;
+    width: 90px;
+    height: 45px;
+    background-color: #8cd6b1;
+    border-radius: 10px;
+    transition: transform .2s;
+    margin-bottom: 30px;
+}
+
+.btn_form:hover{
+    transform: scale(0.9);
+}
+
+@media screen and (min-width: 761px) and (max-width: 1079px) {
+    .header_chat{
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 10px;
+    }
+    
+.form_chat{
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+}
+
+
+}
+
+@media screen and (min-width: 601px) and (max-width: 760px) {
+    .header_chat{
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 10px;
+        width: 30rem;
+        height: 10rem;
+        padding-top: 20px;
+    }
+    
+ .form_chat{
+    position: absolute;
+    top: 95%;
+    left: 50%;
+    width: 30rem;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+
+ }
+
+}
+
+@media screen and (max-width: 600px) {
+    .header_chat{
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 10px;
+        width: 20rem;
+        height: 11rem;
+        padding-top: 20px;
+    }
+
+    .form_chat{
+        position: absolute;
+        top: 95%;
+        left: 50%;
+        width: 20rem;
+        transform: translate(-50%, -50%);
+        padding: 10px;
+    
+     }
+    
+}

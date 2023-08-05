@@ -1,6 +1,6 @@
 import React,{useState} from 'react' 
 
-export default function Nav({onProfileImageClick,onDashImageClick}) {
+export default function Nav({onProfileImageClick,onDashImageClick,onchatToggleButton}) {
   const [tog, settog] = useState(true);
   const NavBarToggleButton = () => {
     settog(!tog) //!returns opposite boolean
@@ -17,7 +17,7 @@ export default function Nav({onProfileImageClick,onDashImageClick}) {
             <h3 className='name-in-logo'>InSeeks</h3>
             <ul className='ul-navbar_center'>
                 <li><img className="dashboard-image" src="/images/dashboard.png" alt="" onClick={onDashImageClick}/></li>
-                <li><img className="chatoption-image" src="/images/chatoption.png" alt="" /></li>
+                <li><img className="chatoption-image" src="/images/chatoption.png" alt="" onClick={onchatToggleButton}/></li>
                 <li><i class="fa-solid fa-bell" id='thebell-icon'></i></li>
                 <li><i class="fa-solid fa-user" id='theprofile-icon' onClick={onProfileImageClick}></i></li>
                 </ul>
