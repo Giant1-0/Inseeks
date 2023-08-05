@@ -1,6 +1,9 @@
 html,body{
     max-width: 100%;
 }
+.profile-page{
+    transition: all 1s ease;
+}
 .user-image-and-name-part{
     margin-top: 5vh;
     height: 150px;

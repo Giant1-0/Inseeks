@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function profilepage() {
   return (
-    <>
+    <div className='profile-page'>
     <div className='user-image-and-name-part'>
             <img src="/images/profile-image.jpeg" alt="" className='user-image'/>
         <div className="users-name">
@@ -31,6 +31,6 @@ export default function profilepage() {
       Manage interest
     </div>
     </div>
-    </>
+    </div>
   )
 }

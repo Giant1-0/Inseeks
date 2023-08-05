@@ -1,11 +1,16 @@
 import React,{useState} from 'react' 
 
-export default function Nav() {
-
+export default function Nav({onProfileImageClick}) {
   const [tog, settog] = useState(true);
   const NavBarToggleButton = () => {
     settog(!tog) //!returns opposite boolean
   }
+
+  // const [showUserProfilePage, setUserProfilePage] =useState(false);
+  // const profilePageToggleButton = () => {
+
+  // }
+
   return (
     <div>
         <div class="div-navbar">
@@ -14,7 +19,7 @@ export default function Nav() {
                 <li><img className="dashboard-image" src="/images/dashboard.png" alt="" /></li>
                 <li><img className="chatoption-image" src="/images/chatoption.png" alt="" /></li>
                 <li><i class="fa-solid fa-bell" id='thebell-icon'></i></li>
-                <li><i class="fa-solid fa-user" id='theprofile-icon'></i></li>
+                <li><i class="fa-solid fa-user" id='theprofile-icon' onClick={onProfileImageClick}></i></li>
                 </ul>
 
             <ul class='ul-navbar_right'>
