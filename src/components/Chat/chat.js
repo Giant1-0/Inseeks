@@ -20,7 +20,10 @@ function Chat(){
              <label htmlFor="suggestion">Suggestion</label>
              <input type="text" className="input_form" id="suggestion" name="suggestion" />
              <label htmlFor="message">Message</label>
-             <input type="text" className="input_form" id="message" name="message" />
+             <textarea type="text" className="input_form" id="message" name="message" />
+             {/* <div className="input_form" id="message" contenteditable="true">
+ 
+            </div> */}
              <input type="button" className="btn_form" value="Send" />
             </form>
          </div>
