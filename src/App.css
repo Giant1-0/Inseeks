@@ -6,22 +6,24 @@ body{
   padding-left: 45px; /*This padding is for the content giant*/
   background-color: #ffffff;
   height: 80px;
-  width: 100%;
 }
 
-.ul-navbar_center,.ul-navbar_right{
+.ul-navbar_right{
   display: flex;  /* to make the navbar horizontal, converting the lists from vertical to horizontal horizontal */
   list-style: none; /* to remove the bulletin ponits */  
   margin-left: auto; /*Will push the list items to right*/
   transition: all 2s ease;
-
 }
-
 .ul-navbar_center{
+  display: flex;  /* to make the navbar horizontal, converting the lists from vertical to horizontal horizontal */
+  list-style: none; /* to remove the bulletin ponits */  
+  /* margin-left: auto; Will push the list items to right */
   padding: 5px; /* what is space between */
-  padding-top: 10px;
+  padding-top: 12px;
   margin-right: 0px;
+  transition: all 2s ease;
 }
+
 .ul-navbar_right{
   padding: 5px; /* what is space between */
   margin-right: 60px;
