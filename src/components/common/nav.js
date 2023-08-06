@@ -13,16 +13,16 @@ export default function Nav({onProfileImageClick,onDashImageClick,onchatToggleBu
 
   return (
     <div>
-        <div class="div-navbar">
+        <div className="div-navbar">
             <h3 className='name-in-logo'>InSeeks</h3>
             <ul className='ul-navbar_center'>
                 <li><img className="dashboard-image" src="/images/dashboard.png" alt="" onClick={onDashImageClick}/></li>
                 <li><img className="chatoption-image" src="/images/chatoption.png" alt="" onClick={onchatToggleButton}/></li>
-                <li><i class="fa-solid fa-bell" id='thebell-icon'></i></li>
-                <li><i class="fa-solid fa-user" id='theprofile-icon' onClick={onProfileImageClick}></i></li>
+                <li><i className="fa-solid fa-bell" id='thebell-icon'></i></li>
+                <li><i className="fa-solid fa-user" id='theprofile-icon' onClick={onProfileImageClick}></i></li>
                 </ul>
 
-            <ul class='ul-navbar_right'>
+            <ul className='ul-navbar_right'>
                 <li><input className='search-text' type='text' placeholder='Search'></input></li>
                 <li><button className='navbar-login-button'> Log out </button></li>
                 <button className='toggle-button-on-nav-bar' onClick={NavBarToggleButton}> In </button>
@@ -37,7 +37,7 @@ export default function Nav({onProfileImageClick,onDashImageClick,onchatToggleBu
                 <li><i class="fa-solid fa-user" id='theprofile-icon'></i><a href="#">Profile</a></li>
                 </ul>
 
-            <ul class='ul-navbar_bottom'>
+            <ul className='ul-navbar_bottom'>
                 <li><input className='search-text-toggle-bottom' type='text' placeholder='Search'></input></li>
                 <li><button className='navbar-login-button-toggle-bottom'> Log out </button></li>
             </ul>

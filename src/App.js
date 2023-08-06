@@ -40,7 +40,7 @@ function App() {
 
       {activeComponent === 'PROFILEPAGE' ? <PROFILEPAGE /> : null}
       {activeComponent === 'DASHBOARD' ? <DASHBOARD /> : null}
-      {activeComponent === 'CHAT' ? <CHAT /> : null}
+      {activeComponent === 'CHAT' ? <CHAT onFormSubmit={chatToggleButton}/> : null}
 
       {/* {showUserProfilePage ? <PROFILEPAGE/>:null }
       {showdashPopUp ? <DASHBOARD/>:null } */}

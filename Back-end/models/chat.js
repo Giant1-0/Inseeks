@@ -4,7 +4,7 @@ const chatSchema = new mongoose.Schema({
     name: String,
     email: Number,
     suggestion: String,
-    Message: String
+    message: String
 })
 
 module.exports = mongoose.model("Chat", chatSchema)
