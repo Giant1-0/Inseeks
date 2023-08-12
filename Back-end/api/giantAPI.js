@@ -1,14 +1,10 @@
 const mongoose = require('mongoose')
 
+mongooseconnection().then(() => console.log("Connected to Mongodb")).catch((err) => console.log(err))
 
-
-mongoose.connect('mongodb://127.0.0.1:27017/GiantDatabase')
-.then(() => {
-    console.log('Connected to MongoDB');
-  })
-  .catch((error) => {
-    console.error('Error connecting to MongoDB:', error);
-  });
+async function mongooseconnection(){
+    await mongoose.connect('mongodb://127.0.0.1:27017/GiantDatabase')
+}
 
 const ChatOnNavbar = require('../models/chat')  
 const express = require('express')
@@ -23,16 +19,18 @@ app.use(cors());
 app.post('/api/users',(req,res) =>{
     const {name, email, suggestion, message} = req.body
     console.log(name,"Hi")
+    console.log(email,"Hi")
+    console.log(suggestion,"Hi")
+    console.log(message,"Hi")
+
     saveUsers()
     async function saveUsers(){
-        const chat = new ChatOnNavbar({
+        const chat = await ChatOnNavbar.create({
             name: name,
             email: email,
             suggestion: suggestion,
             message: message
         })
-    await chat.save()
-    // console.log(chat)
     }
     
 })
