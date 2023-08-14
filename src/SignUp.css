@@ -8,7 +8,7 @@
     font-family: 'Lacquer';
 }
 
-.login {
+.signup {
     background-color: var(--background);
     display: flex;
     justify-content: center;
@@ -17,7 +17,7 @@
     margin: 0;
 }
 
-.container {
+.container-signup {
     display: flex;
     flex-direction: row;
     width: 60%;
@@ -26,7 +26,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.brand-container {
+.brand-container-signup {
     background: var(--primary-color);
     flex: 45%;
     border-radius: 10px 0 0 10px;
@@ -36,7 +36,7 @@
     align-items: center;
 }
 
-.form-container {
+.form-container-signup {
     background: var(--color);
     flex: 55%;
     border-radius: 0 10px 10px 0;
@@ -47,19 +47,19 @@
     position: relative;
 }
 
-.form-container h1 {
+.form-container-signup h1 {
     text-align: center;
     margin-bottom: 70px;
     margin-top: 70px;
 }
 
-.form-container form {
+.form-container-signup form {
     display: flex;
     flex-direction: column;
 }
 
-.form-container input,
-.form-container button {
+.form-container-signup input,
+.form-container-signup button {
     padding: 10px;
     margin-bottom: 10px;
     border: none;
@@ -67,11 +67,11 @@
     font-size: 16px;
 }
 
-.form-container input {
+.form-container-signup input {
     background-color: #f2f2f2;
 }
 
-.form-container button {
+.form-container-signup button {
     background-color: var(--primary-color);
     color: white;
     cursor: pointer;
@@ -94,23 +94,26 @@
     height: auto;
     /* Automatically adjust the height to maintain aspect ratio */
 }
-.redirect-signin{
+.redirect-signin-signup{
     cursor: pointer;
 }
-.i{
-    margin-left: 10px;
+.header-left-signup{
+    margin-left:40px;
+    margin-right: 30px;
+    margin-bottom: 20px;
 }
+
 @media screen and (max-width: 700px) {
 
-    .container {
+    .container-signup {
         flex-direction: column;
     }
 
-    .form-container {
+    .form-container-signup {
         border-radius: 0 0 10px 10px;
     }
 
-    .brand-container {
+    .brand-container-signup {
         border-radius: 10px 10px 0 0;
     }
 }
