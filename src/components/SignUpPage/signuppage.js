@@ -7,11 +7,11 @@ export default function SignUpPage({loginpage,onSignUpFormSubmit}) {
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
   const [username, setUsername] = useState('');
+  const [popUp, setPopUp] = useState('none');
 
-  
+
   const handleLogin = (e) => {
     e.preventDefault();
-    onSignUpFormSubmit();
      const LogInData = {
       fullname : fullname,
       email : email,
@@ -21,20 +21,25 @@ export default function SignUpPage({loginpage,onSignUpFormSubmit}) {
       axios.post('http://localhost:5000/api/logindata', LogInData)
       .then((response)=> {
           console.log('Login data recieveed', response.data)
-      })
+          onSignUpFormSubmit()
+        })
       .catch((err) => {
           console.log('Login data not recieved', err.response)
-          alert('Please Enter a Valid Email Address');
+          setPopUp('block');
+          setTimeout(() => {
+            setPopUp('none'); // Hide popup after 5 seconds
+          }, 3000);
       })
     }
   
   return (
+    <>
+    <div className="message-popup" style={ {display: popUp }}>Please enter a valid email</div>
     <div className='signup'>
     <div className="container-signup">
       <div className="brand-container-signup">
         <h1 className="header header-left-signup">
         Unleash Your Creativity Where the questions Ignite imaginative answer
-
             {/* Sign Up Through */}
             </h1>
         <div className="icon-media-signup">
@@ -80,5 +85,6 @@ export default function SignUpPage({loginpage,onSignUpFormSubmit}) {
     </div>
 
     </div>
+    </>
   )
 }

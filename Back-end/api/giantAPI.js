@@ -51,7 +51,7 @@ app.post('/api/logindata',(req,res) => {
             saveSignUp()            
         } else 
         {
-        return res.status(400).json({ error: 'Invalid email account' });
+        return res.status(400).json({ error: 'Invalid email account' });    
         console.log("Unable to save")
         }     
     async function saveSignUp(){
