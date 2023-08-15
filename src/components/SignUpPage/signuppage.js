@@ -1,13 +1,31 @@
 import React,{useState} from 'react'
+import axios from "axios";
 
-export default function SignUpPage({loginpage}) {
+
+export default function SignUpPage({loginpage,onSignUpFormSubmit}) {
+  const [fullname, setFullname] = useState('');
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
-  
+  const [username, setUsername] = useState('');
+
   
   const handleLogin = (e) => {
     e.preventDefault();
-      
+    onSignUpFormSubmit();
+     const LogInData = {
+      fullname : fullname,
+      email : email,
+      pass : pass,
+      username : username
+    };
+      axios.post('http://localhost:5000/api/logindata', LogInData)
+      .then((response)=> {
+          console.log('Login data recieveed', response.data)
+      })
+      .catch((err) => {
+          console.log('Login data not recieved', err.response)
+          alert('Please Enter a Valid Email Address');
+      })
     }
   
   return (
@@ -29,20 +47,24 @@ export default function SignUpPage({loginpage}) {
         <h1 className="header header-right-signup">Please Enter Details</h1>
         <form action="#" onSubmit={handleLogin}>
         <input type="fullname" name="fullname" id="fullname" placeholder="Full Name" 
-          value={email}
-          onChange={(e)=>setEmail(e.target.value)}
+          value={fullname}
+          onChange={(e)=>setFullname(e.target.value)}
+          required
           />
           <input type="email" name="email" id="email1" placeholder="Email ID" 
           value={email}
           onChange={(e)=>setEmail(e.target.value)}
+          required
           />
           <input type="password" name="pass" id="pass1" placeholder="Password" 
           value={pass}
           onChange={(e)=>setPass(e.target.value)}
+          required
           />
           <input type="username" name="username" id="username" placeholder="Username: How We should call you" 
-          value={pass}
-          onChange={(e)=>setPass(e.target.value)}
+          value={username}
+          onChange={(e)=>setUsername(e.target.value)}
+          required
           />
           <button type="submit">Sign-Up</button>
         </form>

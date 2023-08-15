@@ -1,6 +1,6 @@
 import React,{useState} from 'react' 
 
-export default function Nav({onProfileImageClick,onDashImageClick,onchatToggleButton}) {
+export default function Nav({onProfileImageClick,onDashImageClick,onchatToggleButton,loginpage}) {
   const [tog, settog] = useState(true);
   const NavBarToggleButton = () => {
     settog(!tog) //!returns opposite boolean
@@ -24,7 +24,7 @@ export default function Nav({onProfileImageClick,onDashImageClick,onchatToggleBu
 
             <ul className='ul-navbar_right'>
                 <li><input className='search-text' type='text' placeholder='Search'></input></li>
-                <li><button className='navbar-login-button'> Log out </button></li>
+                <li><button className='navbar-login-button' onClick={loginpage}> Log out </button></li>
                 <button className='toggle-button-on-nav-bar' onClick={NavBarToggleButton}> In </button>
             </ul>
             {/* For toggle Links */}            

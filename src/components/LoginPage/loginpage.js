@@ -1,5 +1,4 @@
-import React,{useState} from 'react'
-//import './LoginPage.css';
+import React,{useState} from "react";
 
 export default function Loginpage({setIsLoggedIn,signuppage}) {
   const [email, setEmail] = useState('');

@@ -41,9 +41,13 @@ function App() {
   const Gologinpage = () => {
     SetSignupToLoginBack(true);
     ShowSignedUp(false);
-
   }
-
+  const SignUpComplete = () =>{
+    ShowSignedUp(false);
+ }
+ const loginpagefromlogoutbutton = () => {
+  setIsLoggedIn(false);
+ }
   return (
     <div>
       {isLoggedIn ? 
@@ -51,7 +55,9 @@ function App() {
       <div> 
         <NAVBAR onProfileImageClick={profilePageToggleButton}
               onDashImageClick={dashToggleButton} 
-              onchatToggleButton={chatToggleButton}/>
+              onchatToggleButton={chatToggleButton}
+              loginpage={loginpagefromlogoutbutton}
+              />
 
               {activeComponent === 'PROFILEPAGE' ? <PROFILEPAGE /> : null}
               {activeComponent === 'DASHBOARD' ? <DASHBOARD /> : null}
@@ -59,10 +65,9 @@ function App() {
  
       </div> 
       : signedUp?
-        <SIGNUP loginpage={Gologinpage}/> 
+        <SIGNUP loginpage={Gologinpage} onSignUpFormSubmit={SignUpComplete}/> 
        : SignUpToLoginBack ?
        <LOGIN setIsLoggedIn={setIsLoggedIn} signuppage={Gosignuppage}/>
-
       :
       <LOGIN setIsLoggedIn={setIsLoggedIn} signuppage={Gosignuppage}/>
 }     
