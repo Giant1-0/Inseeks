@@ -44,7 +44,7 @@ app.post('/api/users',(req,res) => {
 })
 
 
-app.post('/api/logindata',(req,res) => {
+app.post('/api/signupdata',(req,res) => {
     const {fullname,email,pass,username}=req.body
     console.log(emailValidator.validate(email))
         if(emailValidator.validate(email)){
@@ -67,6 +67,30 @@ app.post('/api/logindata',(req,res) => {
     }
 
 })
+
+// app.post('/api/login',(req,res)=>{
+//     const {email,pass}=req.body;
+//     try {
+//         const user = SignUpDetails.findOne({ email: email });
+    
+//         if (!user) {
+//           return res.status(401).json({ error: 'Invalid credentials' });
+//         }
+    
+//         if (user.pass !== pass) {
+//           return res.status(401).json({ error: 'Invalid credentials' });
+//         }
+    
+//         return res.status(200).json({ message: 'Login successful' });
+//       } catch (error) {
+//         console.error(error);
+//         return res.status(500).json({ error: 'Internal server error' });
+//       }
+//     });
+
+
+
+
 
 app.listen(port, ()=>{
     console.log(`Server Started on the port ${port}`)

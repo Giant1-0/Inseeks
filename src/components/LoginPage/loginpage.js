@@ -6,7 +6,7 @@ export default function Loginpage({setIsLoggedIn,signuppage}) {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    if(email == 'kamal@gmail' && pass =="kamal" || email == 'ritik@gmail' && pass =="ritik" || email == 'napo@gmail' && pass =="napo"){
+    if(email === 'kamal@gmail' && pass ==="kamal" || email === 'ritik@gmail' && pass ==="ritik" || email === 'napo@gmail' && pass ==="napo"){
       setIsLoggedIn(true);
     }
   }     

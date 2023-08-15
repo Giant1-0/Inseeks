@@ -12,19 +12,19 @@ export default function SignUpPage({loginpage,onSignUpFormSubmit}) {
 
   const handleLogin = (e) => {
     e.preventDefault();
-     const LogInData = {
+     const SignUpData = {
       fullname : fullname,
       email : email,
       pass : pass,
       username : username
     };
-      axios.post('http://localhost:5000/api/logindata', LogInData)
+      axios.post('http://localhost:5000/api/signupdata', SignUpData)
       .then((response)=> {
-          console.log('Login data recieveed', response.data)
+          console.log('Sign up data recieveed', response.data)
           onSignUpFormSubmit()
         })
       .catch((err) => {
-          console.log('Login data not recieved', err.response)
+          console.log('Sign up data not recieved', err.response)
           setPopUp('block');
           setTimeout(() => {
             setPopUp('none'); // Hide popup after 5 seconds
