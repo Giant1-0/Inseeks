@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import InterestsPopup from './Interest';
 import "./home.css";
 
-function Home() {
+function Home({addAQuestion}) {
 
 
   const [showMore, setShowMore] = useState(false);
@@ -150,7 +150,7 @@ function Home() {
         </div>
 
         <div className="btn-sidebar">
-          <button>Add a question</button>
+          <button onClick={addAQuestion}>Add a question</button>
 
           
         </div>

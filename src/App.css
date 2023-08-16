@@ -92,6 +92,7 @@ transition: transform .2s; /* Animation */
   color: #516759;
   margin-top: 0;
   padding-top: 9.5px;
+  cursor: pointer;
 }
 .toggle-button-on-nav-bar{
   height: 38px;
