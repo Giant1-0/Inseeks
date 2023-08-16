@@ -3,13 +3,34 @@
     --background: rgba(137, 133, 133, 1);
     --color: #fcfcf5;
 }
-.message-popup{
+.message-popup-please-enter-valid-mail{
     padding-top: 2.1vh;
     padding-left: 84vh;
     height: 6vh;
-    font-weight: 500;
-    color:rgba(162, 205, 176, 1) ;
+    font-weight: 700;
+    /* color:rgba(162, 205, 176, 1) ; */
+    color: #516759;
+    background-color: white;
+
 }
+.message-popup-success{
+    padding-top: 2.1vh;
+    padding-left: 96vh;
+    height: 6vh;
+    font-weight: 700;
+    color: #516759;
+    background-color: white;
+}
+.message-popup-already-exists{
+    padding-top: 2.1vh;
+    padding-left: 64vh;
+    height: 6vh;
+    font-weight: 500;
+    color: #516759;
+    background-color: white;
+    
+}
+
 .header {
     font-family: 'Lacquer';
 }

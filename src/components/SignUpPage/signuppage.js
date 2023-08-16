@@ -7,7 +7,10 @@ export default function SignUpPage({loginpage,onSignUpFormSubmit}) {
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
   const [username, setUsername] = useState('');
-  const [popUp, setPopUp] = useState('none');
+  const [popUpCorrectMail, setpopUpCorrectMail] = useState('none');
+  const [popUpSuccess, setpopUpSuccess] = useState('none');
+  const [popUpEmailAlExists, setpopUpEmailAlExists] = useState('none');
+
 
 
   const handleLogin = (e) => {
@@ -20,21 +23,41 @@ export default function SignUpPage({loginpage,onSignUpFormSubmit}) {
     };
       axios.post('http://localhost:5000/api/signupdata', SignUpData)
       .then((response)=> {
-          console.log('Sign up data recieveed', response.data)
-          onSignUpFormSubmit()
+      
+          console.log('Success', response)
+          if(response.status === 200){
+              setpopUpSuccess('block');
+              setTimeout(() => {
+                onSignUpFormSubmit()
+                setpopUpSuccess('none'); // Hide popup after 5 seconds
+              }, 2000);
+
+          }
         })
       .catch((err) => {
-          console.log('Sign up data not recieved', err.response)
-          setPopUp('block');
-          setTimeout(() => {
-            setPopUp('none'); // Hide popup after 5 seconds
-          }, 3000);
+          console.log('There is an error',err.response)
+
+          if(err.response.status === 409){
+            setpopUpEmailAlExists('block');
+              setTimeout(() => {
+                setpopUpEmailAlExists('none'); // Hide popup after 5 seconds
+              }, 4000);
+          }
+          else if(err.response.status === 400){
+            setpopUpCorrectMail('block');
+              setTimeout(() => {
+                setpopUpCorrectMail('none'); // Hide popup after 5 seconds
+              }, 3000);
+          }
       })
     }
   
   return (
     <>
-    <div className="message-popup" style={ {display: popUp }}>Please enter a valid email</div>
+    <div className="message-popup-please-enter-valid-mail" style={ {display: popUpCorrectMail }}>Please enter a valid email</div>
+    <div className="message-popup-success" style={ {display: popUpSuccess }}>Success</div>
+    <div className="message-popup-already-exists" style={ {display: popUpEmailAlExists }}>Oops, user having same email already exists, Please login if already registered</div>
+
     <div className='signup'>
     <div className="container-signup">
       <div className="brand-container-signup">

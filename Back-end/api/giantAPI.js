@@ -44,54 +44,61 @@ app.post('/api/users',(req,res) => {
 })
 
 
-app.post('/api/signupdata',(req,res) => {
+app.post('/api/signupdata', async (req,res) => {
     const {fullname,email,pass,username}=req.body
-    console.log(emailValidator.validate(email))
+
+    const isEmailExist = await SignUpDetails.findOne({email: email})
+
+    if(isEmailExist){
+        console.log("User already exists")
+        return res.status(409).json({error: 'Conflicting'});
+    } else {
+        
         if(emailValidator.validate(email)){
             saveSignUp()            
-        } else 
+            return res.status(200).json({ message: 'User registered successfully' });
+        } 
+        else 
         {
         return res.status(400).json({ error: 'Invalid email account' });    
         console.log("Unable to save")
         }     
+    }
+
+    console.log(emailValidator.validate(email))
+       
     async function saveSignUp(){
-        
         const signup = await SignUpDetails.create({
             fullname : fullname,
             email : email,
             pass: pass,
             username: username
         })
-        return res.status(200).json({ message: 'User registered successfully' });
-
     }
 
 })
 
-// app.post('/api/login',(req,res)=>{
-//     const {email,pass}=req.body;
-//     try {
-//         const user = SignUpDetails.findOne({ email: email });
+app.post('/api/login', async (req,res)=>{
+    //Axios was not working without the try-catch
+    try{
+    const {email,pass}=req.body;
+        console.log(email, pass);
+
+    const name = await SignUpDetails.findOne({email: email}) //Why does not work without async await
+    if(name.email === email && name.pass === pass){
+        res.status(200).json({message: 'user matched'});
+        console.log("user matched")
+    } else {
+        res.status(404).json({message: 'user not found'});
+        console.log("user did not matched")
+    }
+} catch(error) {
+    console.err(error);
+    res.status(500).json({error: 'An error occured'})
+}
+    });
+
     
-//         if (!user) {
-//           return res.status(401).json({ error: 'Invalid credentials' });
-//         }
-    
-//         if (user.pass !== pass) {
-//           return res.status(401).json({ error: 'Invalid credentials' });
-//         }
-    
-//         return res.status(200).json({ message: 'Login successful' });
-//       } catch (error) {
-//         console.error(error);
-//         return res.status(500).json({ error: 'Internal server error' });
-//       }
-//     });
-
-
-
-
-
 app.listen(port, ()=>{
     console.log(`Server Started on the port ${port}`)
 })

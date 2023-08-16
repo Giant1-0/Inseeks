@@ -1,4 +1,5 @@
 import React,{useState} from "react";
+import axios from "axios";
 
 export default function Loginpage({setIsLoggedIn,signuppage}) {
   const [email, setEmail] = useState('');
@@ -6,10 +7,24 @@ export default function Loginpage({setIsLoggedIn,signuppage}) {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    if(email === 'kamal@gmail' && pass ==="kamal" || email === 'ritik@gmail' && pass ==="ritik" || email === 'napo@gmail' && pass ==="napo"){
-      setIsLoggedIn(true);
+     const LogInData = {
+      email : email,
+      pass : pass,
+    };
+      axios.post('http://localhost:5000/api/login', LogInData)
+      .then((response)=> {
+        console.log("Success",response)
+          if(response.status === 200){
+            setIsLoggedIn(true)
+          } else {
+            console.log("User with this email not found")
+          }
+        })
+      .catch((err) => {
+          console.log('Error',err)
+      })
     }
-  }     
+  
   return (
     <div className='login'>
     <div className="container">
