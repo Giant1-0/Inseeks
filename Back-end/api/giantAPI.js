@@ -93,7 +93,7 @@ app.post('/api/login', async (req,res)=>{
         console.log("user did not matched")
     }
 } catch(error) {
-    console.err(error);
+    // console.err(error);
     res.status(500).json({error: 'An error occured'})
 }
     });

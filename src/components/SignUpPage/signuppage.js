@@ -55,13 +55,13 @@ export default function SignUpPage({loginpage,onSignUpFormSubmit}) {
   return (
     <>
     <div className="message-popup-please-enter-valid-mail" style={ {display: popUpCorrectMail }}>Please enter a valid email</div>
-    <div className="message-popup-success" style={ {display: popUpSuccess }}>Success</div>
+    <div className="message-popup-success" style={ {display: popUpSuccess }}>Success!!</div>
     <div className="message-popup-already-exists" style={ {display: popUpEmailAlExists }}>Oops, user having same email already exists, Please login if already registered</div>
 
     <div className='signup'>
     <div className="container-signup">
       <div className="brand-container-signup">
-        <h1 className="header header-left-signup">
+        <h1 className="header-signup header-left-signup">
         Unleash Your Creativity Where the questions Ignite imaginative answer
             {/* Sign Up Through */}
             </h1>
@@ -72,7 +72,7 @@ export default function SignUpPage({loginpage,onSignUpFormSubmit}) {
         </div>
       </div>
       <div className="form-container-signup">
-        <h1 className="header header-right-signup">Please Enter Details</h1>
+        <h1 className="header-signup header-right-signup">Please Enter Details</h1>
         <form action="#" onSubmit={handleLogin}>
         <input type="fullname" name="fullname" id="fullname" placeholder="Full Name" 
           value={fullname}

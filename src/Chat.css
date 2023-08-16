@@ -1,5 +1,7 @@
 .chat{
+    margin-top: 12vh;
     height: 120vh;
+    margin-left: 6vh;
 }
 
 .header_chat{

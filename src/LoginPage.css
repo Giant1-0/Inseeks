@@ -16,6 +16,14 @@
     height: 100vh;
     margin: 0;
 }
+.login-email-pass-wrong{
+    padding-top: 2.1vh;
+    padding-left: 74vh;
+    height: 6vh;
+    font-weight: 700;
+    color: #516759;
+    background-color: white;
+}
 
 .container {
     display: flex;

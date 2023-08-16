@@ -31,8 +31,10 @@
     
 }
 
-.header {
-    font-family: 'Lacquer';
+.header-signup {
+    /* font-family: 'Lacquer'; */
+    font-family: 'Lumanosimo', cursive;
+
 }
 
 .signup {

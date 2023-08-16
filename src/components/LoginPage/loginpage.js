@@ -4,6 +4,7 @@ import axios from "axios";
 export default function Loginpage({setIsLoggedIn,signuppage}) {
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
+  const [LoginFailMessage, setLoginFailMessage] = useState('none');
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -20,12 +21,22 @@ export default function Loginpage({setIsLoggedIn,signuppage}) {
             console.log("User with this email not found")
           }
         })
-      .catch((err) => {
-          console.log('Error',err)
+      .catch((err) => {      
+          console.log('Error',err.response.status)
+          if(err.response.status === 500){
+          setLoginFailMessage('block')
+          setTimeout(() => {
+            setLoginFailMessage('none')
+          }, 4000);
+        } else {
+          console.log("Some other error")
+        }
       })
     }
   
   return (
+    <>
+    <div className="login-email-pass-wrong" style={ {display: LoginFailMessage }}>Oops, Either email or password do not match! Try Again</div>
     <div className='login'>
     <div className="container">
       <div className="brand-container">
@@ -61,5 +72,6 @@ export default function Loginpage({setIsLoggedIn,signuppage}) {
     </div>
 
     </div>
+    </>
   )
 }

@@ -1,8 +1,8 @@
 .popup-container{
-    width: 55vh;
-    height: 40vh;
+    width: 50vh;
+    height: 50vh;
     /* position: fixedyy; */
-    left: 23%;
+    margin-left: 10vh;
     top: 0px;
     z-index: 4;
     border: 2px solid black;
@@ -11,8 +11,8 @@
     text-align: left;
     padding-left: 30px;
     padding-top: 20px;
-    margin-top: 20px;
-    margin-left: 20px;
+    margin-top: 10vh;
+    position: absolute;
 }
 
 .close-button{

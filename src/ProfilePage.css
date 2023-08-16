@@ -3,9 +3,9 @@ html,body{
 }
 .profile-page{
     transition: all 1s ease;
+    margin-top: 16vh;
 }
 .user-image-and-name-part{
-    margin-top: 5vh;
     height: 150px;
     background: #516759;
     display: flex;
