@@ -1,0 +1,132 @@
+html,body{
+    /* max-width: 100%; */
+}
+.profile-page{
+    transition: all 1s ease;
+}
+.user-image-and-name-part{
+    margin-top: 5vh;
+    height: 150px;
+    background: #516759;
+    display: flex;
+}
+.user-image{
+    height: 138px;
+    width: 138px;
+    margin-top: 8px;
+    margin-left: 30vh;
+    border-radius: 50%;
+    transition: all 1s ease;
+
+}
+.users-name{
+    margin-left: 8vh;
+    margin-top: 5vh;
+    color: #d9d9d9;
+    transition: all 1s ease;
+
+}
+h1{
+    margin-bottom: 0;
+}
+h3{
+    margin-top:0;
+}
+
+/* From here the grid system is starting*/
+.container-for-grid{
+    margin: 3.5vh 30vh;
+    display: grid;
+    grid-row-gap: 8vh;
+    grid-column-gap: 5vh;
+    grid-template-rows: 20vh 20vh 20vh;
+    grid-template-columns: auto auto auto;
+    transition: all 0.5s ease;
+}
+
+.add-user{
+    background: #516759;
+    transition: transform .2s; /* Animation */
+    box-shadow: 12px 10px #d9d9d9;
+    width: 40vh;
+    color: #ffffff;
+    text-align: center; /*to align text in center without applying padding property*/
+    padding-top: 56px;
+    font-weight:500;
+}
+.add-user:hover{
+  transform: scale(0.9); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+/* Media Query for Mobile Devices */
+@media screen and (max-width: 480px) {
+    .user-image{
+        margin-left: 1vh;
+    }
+    .users-name{
+        margin-left: 1vh;
+        margin-top: 0vh;
+    }
+    .container-for-grid{
+        margin: 6vh 1vh;
+        grid-row-gap: 0vh;
+        grid-column-gap: 2vh;
+        grid-template-rows: 20vh 20vh 20vh;
+        grid-template-columns: auto auto;
+    }
+    .add-user{
+        margin-bottom: 0;
+        width: 20vh;
+        height: 8vh;
+    }
+}
+  
+/* Media Query for low resolution  Tablets, Ipads */
+@media screen and (min-width: 481px) and (max-width: 767px) {
+    .user-image{
+        margin-left: 4vh;
+    }
+    .users-name{
+        margin-left: 5vh;
+        margin-top: 0vh;
+    }
+    .container-for-grid{
+        margin: 3.5vh 4vh;
+        grid-row-gap: 3vh;
+        grid-column-gap: 6vh;
+        grid-template-rows: 20vh 20vh 20vh;
+        grid-template-columns: auto auto;
+    }
+    .add-user{
+        width: 26vh;
+        height: 12vh;
+
+    }
+
+}
+/* Media Query for Tablets Ipads portrait mode */
+@media screen and (min-width: 768px) and (max-width: 1024px){
+   
+    .user-image{
+        margin-left: 18vh;
+    }
+    .users-name{
+        margin-left: 5vh;
+    }
+    .container-for-grid{
+        margin: 3.5vh 10vh;
+        grid-row-gap: 8vh;
+        grid-column-gap: 8vh;
+        grid-template-rows: 20vh 20vh 20vh;
+        grid-template-columns: auto auto;
+    }
+}
+  
+/* Media Query for Laptops and Desktops */
+@media screen and (min-width: 1025px) and (max-width: 1280px){
+
+}
+  
+/* Media Query for Large screens */
+@media screen and (min-width: 1281px) {
+  
+}

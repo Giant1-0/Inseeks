@@ -1,0 +1,113 @@
+.container {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Larger column takes 2/3, smaller takes 1/3 */
+    grid-gap: 20px;
+  }
+
+  .left-sidebar{
+    width: 39vh;
+    height: 81.5vh; /* Set the sidebar height to 100% of the viewport height */
+    padding: 20px;
+    background-color: #F0F0F0;
+    position: fixed; /* Set the sidebar to a fixed position */
+    top: 12%;
+    left: 0.2%;
+  }
+  
+  .main-content {
+    width: 107vh;
+    padding: 20px;
+    background-color: #f0f0f0;
+    overflow-y: auto;
+    margin-top: 90px;
+    margin-right: 350px;
+    margin-left: 360px;
+  }
+  
+  .right-sidebar {
+    width: 35vh;
+    height: 81.5vh; /* Set the sidebar height to 100% of the viewport height */
+    padding: 20px;
+    background-color: #F0F0F0;
+    position: fixed; /* Set the sidebar to a fixed position */
+    top: 12%; /* Stick to the top of the viewport */
+    left: 80%; /* Stick to the left of the viewport */
+  }
+
+  .post {
+    border: 1px solid #ccc;
+    margin: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .post-header {
+    display: flex;
+    align-items: center;
+  }
+  
+  .person-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .post-info {
+    flex: 1;
+
+  }
+  
+  .post-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    background-color: #8CD6B1;
+    color: #010101;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform .2s;
+  }
+
+  button:hover{
+    transform: scale(1.2);
+  }
+
+
+  .btn-sidebar{
+    position: fixed;
+    top: 90%;
+    left: 84%;
+  }
+
+  .interest{
+    padding-left: 40px;
+    color: rgb(21, 20, 20);
+  }
+
+  .selected-interests {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .remove-icon {
+    cursor: pointer;
+    color: red;
+    margin-left: 5px;
+  }
+  
+  .remove-icon:hover {
+    color: darkred;
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      grid-template-columns: 1fr; /* Stack columns on small screens */
+    }
+  }

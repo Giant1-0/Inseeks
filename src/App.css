@@ -1,0 +1,247 @@
+body{
+  background-color: #8f8b8b;
+}
+.div-navbar{
+  display: flex;
+  padding-left: 45px; /*This padding is for the content giant*/
+  background-color: #ffffff;
+  height: 80px;
+  position: fixed;
+  width: 100%;
+}
+
+.ul-navbar_right{
+  display: flex;  /* to make the navbar horizontal, converting the lists from vertical to horizontal horizontal */
+  list-style: none; /* to remove the bulletin ponits */  
+  margin-left: auto; /*Will push the list items to right*/
+  transition: all 2s ease;
+}
+.ul-navbar_center{
+  display: flex;  /* to make the navbar horizontal, converting the lists from vertical to horizontal horizontal */
+  list-style: none; /* to remove the bulletin ponits */  
+  /* margin-left: auto; Will push the list items to right */
+  padding: 5px; /* what is space between */
+  padding-top: 12px;
+  margin-right: 0px;
+  transition: all 2s ease;
+}
+
+.ul-navbar_right{
+  padding: 5px; /* what is space between */
+  margin-right: 60px;
+}
+.ul-navbar_center li{
+  padding-left: 50px; /* to give the space between the lists */
+  color: #799a84;
+}
+.ul-navbar_right li{
+  padding-left: 28px; /* to give the space between the lists */
+
+}
+.dashboard-image{
+  height: 25px;
+  transition: transform .2s; /* Animation */
+}
+.dashboard-image:hover{
+  transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+.chatoption-image{
+  height: 30px;
+  transition: transform .2s; /* Animation */
+}
+.chatoption-image:hover{
+  transform: scale(1.4); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+
+}
+#thebell-icon{
+font-size: 30px; /*To increase the size of the icon*/
+transition: transform .2s; /* Animation */
+}
+#thebell-icon:hover{
+  transform: scale(1.25); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+#theprofile-icon{
+font-size: 26px;
+transition: transform .2s; /* Animation */
+}
+#theprofile-icon:hover{
+  transform: scale(1.3); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+.navbar-login-button, .navbar-login-button-toggle-bottom{
+  background-color: #799a84;
+  color: white;
+  border: none;
+  height: 35px;
+  width: 100px;
+  border-radius: 12px;
+  transition: transform .2s; /* Animation */
+}
+
+.navbar-login-button:hover{
+  transform: scale(0.9); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+.search-text,.search-text-toggle-bottom{
+  height: 34px;
+  border-radius: 12px;
+  border: 1px solid grey;
+}
+.name-in-logo{
+  font-family: 'Lumanosimo', cursive;
+  font-size: 40px;
+  color: #516759;
+  margin-top: 0;
+  padding-top: 9.5px;
+}
+.toggle-button-on-nav-bar{
+  height: 38px;
+  min-width: 40px;
+  margin-left: 25px;
+  border: none;
+  background-color: #516759;
+  color: #ffffff;
+  font-size: 30px;
+  font-family: 'Lumanosimo', cursive;
+}
+/*From here onwards it is the toggle div*/
+.ToggleDiv{
+  background-color: #ffffff;
+  height: 80vh;
+  width: 60vh;
+  padding-top:4vh;
+  margin-top: 2vh;
+  margin-left: auto;
+  animation-duration: 1s; /*Any duration that will be done in ToggleDiv*/
+  display: none; /* Move the div to the left outside the viewport initially .*/ 
+}
+
+.ToggleDivnotShowing{
+  display: none;
+}
+.ul-navbar_top,.ul-navbar_bottom{
+  list-style: none;
+  line-height: 50px; /*This is used for vertical spaceing between the list items*/
+}
+a{
+  font-family: 'Lumanosimo', cursive;
+  text-decoration: none;
+  color: #516759;
+  padding-left: 10px;
+}
+@media screen and (max-width: 480px){
+  .ul-navbar_center{
+    display: none;
+    margin-left: auto;
+  }
+  .ul-navbar_right{
+    margin-right: 20px;
+  }
+  .div-navbar{
+    padding-left: 12px; /*This padding is for the content giant*/
+  }
+  .search-text{
+    display: none;
+  }
+  .navbar-login-button{
+    display: none;
+  }
+  .toggle-button-on-nav-bar{
+    margin-left: 110px;
+  }
+  .ToggleDiv{
+    display: block; /*Display block is for making the div visible*/
+    width: 100%;
+    animation-name: slideFromRight;
+
+  }
+}
+@media screen and (min-width: 481px) and (max-width: 550px){ 
+  .ul-navbar_center{
+    display: none;
+    margin-left: auto;
+  }
+  .ul-navbar_right{
+    margin-right: 20px;
+  }
+  .search-text{
+    display: none;
+   }
+   .name-in-logo{
+    margin-left: 1px;
+   }
+   .toggle-button-on-nav-bar{
+    margin-left: 2px;
+   }
+   .navbar-login-button{
+    display: none;
+   }
+   .ToggleDiv{
+    display: block; /*Display block is for making the div visible*/
+    animation-name: slideFromRight;
+
+  }
+}
+
+
+@media screen and (min-width: 501px) and (max-width: 650px){
+  .ul-navbar_center{
+    display: none;
+    margin-left: auto;
+  }
+  .ul-navbar_right{
+    margin-right: 20px;
+  }
+  .search-text{
+    display: none;
+   }
+   .name-in-logo{
+    margin-left: 1px;
+   }
+   .ToggleDiv{
+    display: block; /*Display block is for making the div visible*/
+    animation-name: slideFromRight;
+
+  }
+}
+@media screen and (min-width: 651px) and (max-width: 900px){
+  .ul-navbar_center{
+    display: none;
+    margin-left: auto;
+  }
+  .ul-navbar_right{
+    margin-right: 20px;
+  }
+ .search-text-toggle-bottom{
+    display: none;
+ }
+   .ToggleDiv{
+    display: block; /*Display block is for making the div visible*/
+    animation-name: slideFromRight;
+
+  }
+
+  }
+
+@media screen and (min-width: 901px){
+  .toggle-button-on-nav-bar{
+    display: none;
+  }
+}
+@keyframes slideFromRight {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* @keyframes slideToRight {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+ */
