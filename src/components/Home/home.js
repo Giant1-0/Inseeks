@@ -79,7 +79,7 @@ function Home({addAQuestion}) {
                   </span>
                 )}
               </p>
-              <button onClick={toggleContent}>
+              <button className="btn-right-sidebar" onClick={toggleContent}>
                 {showMore ? "Read Less" : "Read More"}
               </button>
             </div>
@@ -122,7 +122,7 @@ function Home({addAQuestion}) {
                   </span>
                 )}
               </p>
-              <button onClick={toggleContent}>
+              <button className="btn-right-sidebar" onClick={toggleContent}>
                 {showMore ? "Read Less" : "Read More"}
               </button>
             </div>
@@ -143,14 +143,14 @@ function Home({addAQuestion}) {
               <li key={index}>{interest}</li>
             ))}
           </ul>
-          <button onClick={openPopup}>Add Interests</button>
+          <button className="btn-right-sidebar" onClick={openPopup}> + Interests</button>
           {showPopup && (
             <InterestsPopup onClose={closePopup} addInterest={addInterestToSidebar} />
            )}
         </div>
 
         <div className="btn-sidebar">
-          <button onClick={addAQuestion}>Add a question</button>
+          <button className="btn-right-sidebar" onClick={addAQuestion}>Add a question</button>
 
           
         </div>

@@ -25,7 +25,7 @@ function InterestsPopup({ onClose, addInterest }) {
 
   return (
     <div className="interests-popup">
-      <h2>Add Interests</h2>
+      <h3>Add Interests</h3>
       <select
         value={selectedInterest}
         onChange={(e) => setSelectedInterest(e.target.value)}
@@ -37,7 +37,7 @@ function InterestsPopup({ onClose, addInterest }) {
           </option>
         ))}
       </select>
-      <button onClick={addNewInterest} disabled={!selectedInterest}>
+      <button className="btn-right-sidebar" onClick={addNewInterest} disabled={!selectedInterest}>
         Add
       </button>
       <ul className="selected-interests">
@@ -50,7 +50,7 @@ function InterestsPopup({ onClose, addInterest }) {
           </li>
         ))}
       </ul>
-      <button onClick={handleAddInterests}>Save Interests</button>
+      <button className="btn-right-sidebar" onClick={handleAddInterests}>Save Interests</button>
     </div>
   );
 }
