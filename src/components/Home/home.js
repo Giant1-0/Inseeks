@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 import InterestsPopup from './Interest';
 import "./home.css";
 
-function Home({addAQuestion}) {
+function Home({}) {
 
 
   const [showMore, setShowMore] = useState(false);
@@ -150,16 +152,9 @@ function Home({addAQuestion}) {
         </div>
 
         <div className="btn-sidebar-home">
-          <button className="button-home" onClick={addAQuestion}>Add a question</button>
-
-          
+          <Link to="/post"><button className="button-home">Add a question</button> </Link>
         </div>
-
-        
-        
         </div>
-       
-        
       </div>
     </>
   );

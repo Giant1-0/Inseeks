@@ -1,12 +1,12 @@
 import React from 'react'
 
-export default function profilepage() {
+export default function profilepage({userDataInformation}) {
   return (
     <div className='profile-page'>
     <div className='user-image-and-name-part'>
             <img src="/images/profile-image.jpeg" alt="" className='user-image'/>
         <div className="users-name">
-            <h1>Kamallochan Boruah</h1>
+            <h1>{userDataInformation.name}</h1>
             <h3>Software Developer | Admin </h3>
         </div>
     </div>

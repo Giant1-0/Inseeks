@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import NAVBAR from './components/common/nav'
 import PROFILEPAGE from './components/Profile pages/profilepage'
 import DASHBOARD from './components/Dashboard/popupdashboard'
@@ -7,6 +7,7 @@ import LOGIN from './components/LoginPage/loginpage'
 import SIGNUP from './components/SignUpPage/signuppage'
 import HOME from './components/Home/home'
 import POST from './components/Post/Post'
+import { BrowserRouter,Routes, Route} from 'react-router-dom';
 
 import './App.css';
 import './ProfilePage.css';
@@ -21,27 +22,43 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] =useState(false);
   const [signedUp, ShowSignedUp] =useState(false);
   const [SignUpToLoginBack, SetSignupToLoginBack] =useState(false);
-
-  const [post, setPost] = useState(false);
-  const [homePageSwitching, setSwitch] = useState(1);
+  const [userDataInformation, setUserData] = useState({});
 
 
-  const profilePageToggleButton = () => {
-    setSwitch(0);
-    setActiveComponent((prevComponent) => 
-      prevComponent === 'PROFILEPAGE' ? 'HOME': 'PROFILEPAGE')
-  }
+  useEffect(()=> {
+    const storedLoginStatus = localStorage.getItem('isLoggedIn');
+    if(storedLoginStatus) {
+      setIsLoggedIn(JSON.parse(storedLoginStatus))
+    }
+
+    // const storedUserData = localStorage.getItem('userDataInformation');
+    // if (storedUserData) {
+    //   const parsedUserData = JSON.parse(storedUserData);
+    //   setUserData(parsedUserData);
+  
+    //   console.log('User Data:', parsedUserData); // Log the user data
+  
+    //   if (parsedUserData && parsedUserData.name) {
+    //     console.log('User Name:', parsedUserData.name);
+    //   }
+    // }
+    // const storedUserData = localStorage.getItem('userDataInformation');
+    // if (storedUserData) {
+    // console.log("Hi",storedUserData)
+    //   setUserData(parsedUserData);
+  
+    //   console.log('User Data:', parsedUserData); // Log the user data
+    // }
+  
+  },[])
+  
 
   const dashToggleButton = () => {
     setActiveComponent((prevComponent) =>
     prevComponent === 'DASHBOARD' ? null : 'DASHBOARD')
 }  
 
-  const chatToggleButton = () => {
-    setSwitch(0);
-    setActiveComponent((prevComponent) =>
-    prevComponent === 'CHAT' ? 'HOME': 'CHAT')
-}  
+
   const Gosignuppage = () => {
     ShowSignedUp(true);
     SetSignupToLoginBack(false);
@@ -55,52 +72,41 @@ function App() {
  }
  const loginpagefromlogoutbutton = () => {
   setIsLoggedIn(false);
+  localStorage.removeItem('isLoggedIn')
  }
- const WriteonPost = () => {
-  setPost(true);
+ const handleLogin = (userData) => {
+  setIsLoggedIn(true);
+  localStorage.setItem('isLoggedIn',true)
+  setUserData(userData)
+  localStorage.setItem('userDataInformation', JSON.stringify(userData));
 }
 
-const backToHomePage =() =>{
-  //  setBack(true);
-   setPost(false);
-   setSwitch(1);
-  //  setActiveComponent('HOME')
-  setActiveComponent((prevComponent)=>
-    prevComponent === 'HOME' ? null:'HOME'
-  )
-}
   return (
     <div>
       {isLoggedIn ? 
       
       <div> 
-        <NAVBAR onProfileImageClick={profilePageToggleButton}
-              onDashImageClick={dashToggleButton} 
-              onchatToggleButton={chatToggleButton}
-              loginpage={loginpagefromlogoutbutton}
-              homePage={backToHomePage}
-              />
-
-              {activeComponent === 'PROFILEPAGE' ? <PROFILEPAGE /> : null}
+        <BrowserRouter>
+        <NAVBAR onDashImageClick={dashToggleButton} loginpage={loginpagefromlogoutbutton}/>
+        <Routes>
+          <Route path='/' element={<HOME/>}/>
+          <Route path='/chat' element={<CHAT/>}/>
+          <Route path='/profile' element={<PROFILEPAGE userDataInformation={userDataInformation}/>}/>
+          <Route path='/post' element={<POST/>}>
+          </Route>
+        </Routes>
+        </BrowserRouter>
               {activeComponent === 'DASHBOARD' ? <DASHBOARD /> : null}
-              {activeComponent === 'CHAT' ? <CHAT onFormSubmit={chatToggleButton}/> : null}
-              {activeComponent === 'HOME' ? <HOME /> : null}
-
-              {
-      post? <POST/> : homePageSwitching? <HOME addAQuestion={WriteonPost}/> :null
-    }
-
-
       </div> 
       : signedUp?
         <SIGNUP loginpage={Gologinpage} onSignUpFormSubmit={SignUpComplete}/> 
        : SignUpToLoginBack ?
-       <LOGIN setIsLoggedIn={setIsLoggedIn} signuppage={Gosignuppage}/>
+       <LOGIN setIsLoggedIn={handleLogin} signuppage={Gosignuppage}/>
       :
-      <LOGIN setIsLoggedIn={setIsLoggedIn} signuppage={Gosignuppage}/>
-}     
+      <LOGIN setIsLoggedIn={handleLogin} signuppage={Gosignuppage}/>
+      }
     </div>
-  );
-}
-
+  )
+  
+    }      
 export default App;

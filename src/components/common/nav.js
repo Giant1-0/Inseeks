@@ -1,6 +1,8 @@
 import React,{useState} from 'react' 
+import { Link } from 'react-router-dom';
 
-export default function Nav({onProfileImageClick,onDashImageClick,onchatToggleButton,loginpage,homePage}) {
+
+export default function Nav({onDashImageClick,loginpage}) {
   const [tog, settog] = useState(true);
   const NavBarToggleButton = () => {
     settog(!tog) //!returns opposite boolean
@@ -14,12 +16,12 @@ export default function Nav({onProfileImageClick,onDashImageClick,onchatToggleBu
   return (
     <div>
         <div className="div-navbar">
-            <h3 className='name-in-logo' onClick={homePage}>InSeeks</h3>
+          <Link to="/"><h3 className='name-in-logo'> InSeels</h3></Link>
             <ul className='ul-navbar_center'>
                 <li><img className="dashboard-image" src="/images/dashboard.png" alt="" onClick={onDashImageClick}/></li>
-                <li><img className="chatoption-image" src="/images/chatoption.png" alt="" onClick={onchatToggleButton}/></li>
+                <Link to="/chat"> <li><img className="chatoption-image" src="/images/chatoption.png" alt=""/></li></Link>
                 <li><i className="fa-solid fa-bell" id='thebell-icon'></i></li>
-                <li><i className="fa-solid fa-user" id='theprofile-icon' onClick={onProfileImageClick}></i></li>
+                <Link to="/profile"><li><i className="fa-solid fa-user" id='theprofile-icon'></i></li></Link>
                 </ul>
 
             <ul className='ul-navbar_right'>

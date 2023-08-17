@@ -26,13 +26,6 @@ const PopupWindow = () => {
                 </tr>
               </table>
 
-{/*         
-              <ul>
-                <li>
-                  <img className="popup-img" src="\images\my.jpg" alt="" /><p>Ritik Dwivedi</p>
-                  <img className="popup-img" src="\images\my.jpg" alt="" /><p>Ritik Dwivedi</p>
-                </li>
-              </ul>  */}
       </div>
     </div>
   );

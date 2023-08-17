@@ -16,7 +16,7 @@ export default function Loginpage({setIsLoggedIn,signuppage}) {
       .then((response)=> {
         console.log("Success",response)
           if(response.status === 200){
-            setIsLoggedIn(true)
+            setIsLoggedIn()
           } else {
             console.log("User with this email not found")
           }
