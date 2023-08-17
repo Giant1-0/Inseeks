@@ -18,7 +18,7 @@ import './SignUp.css'
 function App() {
 
   const [activeComponent, setActiveComponent] =useState(null);
-  const [isLoggedIn, setIsLoggedIn] =useState(true);
+  const [isLoggedIn, setIsLoggedIn] =useState(false);
   const [signedUp, ShowSignedUp] =useState(false);
   const [SignUpToLoginBack, SetSignupToLoginBack] =useState(false);
 
