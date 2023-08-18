@@ -30,26 +30,10 @@ function App() {
     if(storedLoginStatus) {
       setIsLoggedIn(JSON.parse(storedLoginStatus))
     }
-
-    // const storedUserData = localStorage.getItem('userDataInformation');
-    // if (storedUserData) {
-    //   const parsedUserData = JSON.parse(storedUserData);
-    //   setUserData(parsedUserData);
-  
-    //   console.log('User Data:', parsedUserData); // Log the user data
-  
-    //   if (parsedUserData && parsedUserData.name) {
-    //     console.log('User Name:', parsedUserData.name);
-    //   }
-    // }
-    // const storedUserData = localStorage.getItem('userDataInformation');
-    // if (storedUserData) {
-    // console.log("Hi",storedUserData)
-    //   setUserData(parsedUserData);
-  
-    //   console.log('User Data:', parsedUserData); // Log the user data
-    // }
-  
+    const storedUserData = localStorage.getItem('userDataInformation');
+    if (storedUserData) {
+      setUserData(JSON.parse(storedUserData));
+    }
   },[])
   
 
@@ -79,6 +63,10 @@ function App() {
   localStorage.setItem('isLoggedIn',true)
   setUserData(userData)
   localStorage.setItem('userDataInformation', JSON.stringify(userData));
+  console.log('isLoggedIn:', isLoggedIn);
+console.log('signedUp:', signedUp);
+console.log('userDataInformation:', userDataInformation);
+
 }
 
   return (
@@ -91,7 +79,7 @@ function App() {
         <Routes>
           <Route path='/' element={<HOME/>}/>
           <Route path='/chat' element={<CHAT/>}/>
-          <Route path='/profile' element={<PROFILEPAGE userDataInformation={userDataInformation}/>}/>
+          <Route path='/profile' element={<PROFILEPAGE username={userDataInformation.username}/>}/>
           <Route path='/post' element={<POST/>}>
           </Route>
         </Routes>
@@ -101,9 +89,9 @@ function App() {
       : signedUp?
         <SIGNUP loginpage={Gologinpage} onSignUpFormSubmit={SignUpComplete}/> 
        : SignUpToLoginBack ?
-       <LOGIN setIsLoggedIn={handleLogin} signuppage={Gosignuppage}/>
+       <LOGIN setIsLoggedIn={handleLogin} signuppage={Gosignuppage} onLoginSuccess={handleLogin}/>
       :
-      <LOGIN setIsLoggedIn={handleLogin} signuppage={Gosignuppage}/>
+      <LOGIN setIsLoggedIn={handleLogin} signuppage={Gosignuppage} onLoginSuccess={handleLogin}/>
       }
     </div>
   )

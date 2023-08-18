@@ -1,7 +1,7 @@
 import React,{useState} from "react";
 import axios from "axios";
 
-export default function Loginpage({setIsLoggedIn,signuppage}) {
+export default function Loginpage({setIsLoggedIn,signuppage,onLoginSuccess}) {
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
   const [LoginFailMessage, setLoginFailMessage] = useState('none');
@@ -17,6 +17,11 @@ export default function Loginpage({setIsLoggedIn,signuppage}) {
         console.log("Success",response)
           if(response.status === 200){
             setIsLoggedIn()
+            const {message, username} = response.data;
+            console.log(message);
+            console.log(username)
+            onLoginSuccess({message,username})
+
           } else {
             console.log("User with this email not found")
           }

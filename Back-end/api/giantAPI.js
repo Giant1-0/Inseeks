@@ -86,8 +86,9 @@ app.post('/api/login', async (req,res)=>{
 
     const name = await SignUpDetails.findOne({email: email}) //Why does not work without async await
     if(name.email === email && name.pass === pass){
-        res.status(200).json({message: 'user matched'});
-        console.log("user matched")
+        res.status(200).json({message: 'user matched',username: name.username});
+        console.log("user matched",name.username)
+
     } else {
         res.status(404).json({message: 'user not found'});
         console.log("user did not match")
