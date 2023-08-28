@@ -7,6 +7,7 @@ import LOGIN from './components/LoginPage/loginpage'
 import SIGNUP from './components/SignUpPage/signuppage'
 import HOME from './components/Home/home'
 import POST from './components/Post/Post'
+import REQUEST from './components/Request/requestquestion'
 import { BrowserRouter,Routes, Route} from 'react-router-dom';
 
 import './App.css';
@@ -81,6 +82,7 @@ console.log('userDataInformation:', userDataInformation);
           <Route path='/chat' element={<CHAT/>}/>
           <Route path='/profile' element={<PROFILEPAGE username={userDataInformation.username}/>}/>
           <Route path='/post' element={<POST/>}>
+          {/* <Route path='/requests' element={<REQUEST/>}/> */}
           </Route>
         </Routes>
         </BrowserRouter>

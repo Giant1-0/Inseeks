@@ -1,4 +1,5 @@
   import React from 'react'
+  import { Link } from 'react-router-dom';
 
   export default function profilepage({username}) {
     return (
@@ -22,7 +23,10 @@
         View users
       </div>
       <div className="add-user">
-        List of questions
+      <Link to="/requests">
+          <p>List of questions</p>
+      </Link>
+
       </div>
       <div className="add-user">
         See message requests

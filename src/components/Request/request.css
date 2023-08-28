@@ -1,0 +1,56 @@
+.question-root-page{
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: flex-start; */
+}
+.question-request-page{
+    margin-left: 22vh;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    /* flex-wrap: wrap; */
+    /* justify-content: start; */
+    align-items: flex-start;
+}
+.item{
+    padding-left: 12px;
+    padding-right: 12px;
+    background-color: white;
+    margin-left: 20px;
+}
+.button-item{
+ background-color: #516759;
+ color: white;
+ height: 8vh;
+ width: 10vh;
+ margin-left: 20px;   
+ border-radius: 5%;
+ border: none;
+}
+.Question-By{
+    max-height: 36vh;
+    width: 130vh;
+    display: flex;
+}
+.question-number{
+    margin-top: 14px;
+}
+.question{
+    margin-left: 10px;
+    width: 500px;
+}
+.reject-the-question{
+    background: #717a83;
+}
+.Asked-By{
+    margin-top: 2px;
+    margin-left: 100px;
+    margin-bottom: 0;
+    height: 10px;
+}
+.Date-Asked{
+    height: 10px;
+    margin-top: 14px;
+    margin-left: 100px;
+}
