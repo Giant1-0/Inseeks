@@ -49,14 +49,39 @@ h3{
     transition: transform .2s; /* Animation */
     box-shadow: 12px 10px #d9d9d9;
     width: 40vh;
+    height: 10vh;
     color: #ffffff;
-    text-align: center; /*to align text in center without applying padding property*/
+    text-align: center; 
+    place-items: center;
+    /*to align text in center without applying padding property*/
     padding-top: 56px;
     font-weight:500;
+}
+
+.add-user4{
+    background: #516759;
+    transition: transform .2s; /* Animation */
+    box-shadow: 12px 10px #d9d9d9;
+    width: 40vh;
+    height: 12.5vh;
+    color: #ffffff;
+    text-align: center; 
+    place-items: center;
+    /*to align text in center without applying padding property*/
+    padding-top: 38px;
+    font-weight:500;
+}
+.link-style{
+    padding: none;
+    text-decoration: none;
+    color: inherit;
 }
 .add-user:hover{
   transform: scale(0.9); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
+.add-user4:hover{
+    transform: scale(0.9); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
 /* Media Query for Mobile Devices */
 @media screen and (max-width: 480px) {
     .user-image{

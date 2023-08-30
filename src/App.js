@@ -81,9 +81,8 @@ console.log('userDataInformation:', userDataInformation);
           <Route path='/' element={<HOME/>}/>
           <Route path='/chat' element={<CHAT/>}/>
           <Route path='/profile' element={<PROFILEPAGE username={userDataInformation.username}/>}/>
-          <Route path='/post' element={<POST/>}>
-          {/* <Route path='/requests' element={<REQUEST/>}/> */}
-          </Route>
+          <Route path='/post' element={<POST/>}/>
+          <Route path='/requests' element={<REQUEST/>}/>
         </Routes>
         </BrowserRouter>
               {activeComponent === 'DASHBOARD' ? <DASHBOARD /> : null}

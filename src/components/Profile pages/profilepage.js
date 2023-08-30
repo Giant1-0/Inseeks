@@ -22,12 +22,12 @@
       <div className="add-user">
         View users
       </div>
-      <div className="add-user">
       <Link to="/requests">
+      <div className="add-user4">
           <p>List of questions</p>
+      </div>
       </Link>
 
-      </div>
       <div className="add-user">
         See message requests
       </div>
