@@ -35,7 +35,7 @@ export default function SignUpPage({loginpage,onSignUpFormSubmit}) {
           }
         })
       .catch((err) => {
-          console.log('There is an error',err.response)
+          console.log('There is an error',err)
 
           if(err.response.status === 409){
             setpopUpEmailAlExists('block');

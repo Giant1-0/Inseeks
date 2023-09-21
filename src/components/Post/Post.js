@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import './Post.css';
+import axios from 'axios';
 
+import './Post.css';
+//http://localhost:5000/api/login
 export default function Post(){
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
@@ -23,23 +25,20 @@ export default function Post(){
     setVideo(event.target.files[0]);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    // You can use this data to send to a server or perform other actions
-    const formData = new FormData();
-    formData.append('title', title);
-    formData.append('body', body);
-    formData.append('image', image);
-    formData.append('video', video);
-
-    console.log('Form data:', formData);
-
-    // Reset the form
-    setTitle('');
-    setBody('');
-    setImage(null);
-    setVideo(null);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const questionDetail = {
+      title : title,
+      body : body
+    }
+    axios.post('http://localhost:5000/post/questionrequest',questionDetail)
+    .then((response) => {
+      if(response.status == 200) {
+        console.log("Success")
+      }
+    }).catch((err) => {
+      console.log(err.response)
+    })
   };
     return(
         <>

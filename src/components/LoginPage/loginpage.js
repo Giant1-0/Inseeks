@@ -45,7 +45,7 @@ export default function Loginpage({setIsLoggedIn,signuppage,onLoginSuccess}) {
     <div className='login'>
     <div className="container">
       <div className="brand-container">
-        <h1 className="header header-left">GwfswfIANT</h1>
+        <h1 className="header header-left">Inseeks</h1>
         <div className="icon-media">
           <i className="fa-brands fa-facebook fa-xl i"></i>
           <i className="fa-brands fa-instagram fa-xl i"></i>

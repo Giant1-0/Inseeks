@@ -8,10 +8,6 @@ export default function Nav({onDashImageClick,loginpage}) {
     settog(!tog) //!returns opposite boolean
   }
 
-  // const [showUserProfilePage, setUserProfilePage] =useState(false);
-  // const profilePageToggleButton = () => {
-
-  // }
 
   return (
     <div>
@@ -19,7 +15,7 @@ export default function Nav({onDashImageClick,loginpage}) {
           <Link to="/"><h3 className='name-in-logo'> InSeeks</h3></Link>
             <ul className='ul-navbar_center'>
                 <li><img className="dashboard-image" src="/images/dashboard.png" alt="" onClick={onDashImageClick}/></li>
-                <Link to="/chat"> <li><img className="chatoption-image" src="/images/chatoption.png" alt=""/></li></Link>
+                {/* <Link to="/chat"> <li><img className="chatoption-image" src="/images/chatoption.png" alt=""/></li></Link> */}
                 <li><i className="fa-solid fa-bell" id='thebell-icon'></i></li>
                 <Link to="/profile"><li><i className="fa-solid fa-user" id='theprofile-icon'></i></li></Link>
                 </ul>
@@ -34,7 +30,7 @@ export default function Nav({onDashImageClick,loginpage}) {
       <div className={`ToggleDiv${tog? 'notShowing' : ''}`}>
       <ul className='ul-navbar_top'>
                 <li><img className="dashboard-image" src="/images/dashboard.png" alt="" /><a href="#">Dashboard</a></li>
-                <li><img className="chatoption-image" src="/images/chatoption.png" alt="" /><a href="#">Chat</a></li>
+                {/* <li><img className="chatoption-image" src="/images/chatoption.png" alt="" /><a href="#">Chat</a></li> */}
                 <li><i class="fa-solid fa-bell" id='thebell-icon'></i><a href="#">Notification</a></li>
                 <li><i class="fa-solid fa-user" id='theprofile-icon'></i><a href="#">Profile</a></li>
                 </ul>
