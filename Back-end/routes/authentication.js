@@ -3,6 +3,9 @@ const router = express.Router();
 const SignUpDetails = require('../models/signup')
 const emailValidator = require('email-validator')
 const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
+
+const JWT_SECRET  = 'KamalNapoRitik$class1'
 
 router.post('/signupdata', async (req,res) => {
     const {fullname,email,pass,username}=req.body
@@ -65,18 +68,28 @@ router.post('/users',(req,res) => {
 router.post('/login', async (req,res)=>{
     //Axios was not working without the try-catch
     try{
+
     const {email,pass}=req.body;
         console.log(email, pass);
 
     const name = await SignUpDetails.findOne({email: email}) //Why does not work without async await
-    if(name.email === email && name.pass === pass){
-        res.status(200).json({message: 'user matched',username: name.username});
-        console.log("user matched",name.username)
 
-    } else {
+    if(!name) {
         res.status(404).json({message: 'user not found'});
         console.log("user did not match")
+
     }
+    const passwordComparison = await bcrypt.compare(pass, name.pass)
+    if(!passwordComparison){
+        res.status(400).json({message: 'Wrong Password'});
+        console.log("user did not match")
+    }
+    else {
+        res.status(200).json({message: 'user matched',username: name.username});
+        console.log("user matched",name.pass,"Hi")
+    } 
+    
+   
 } catch(error) {
     // console.err(error);
     res.status(500).json({error: 'An error occured'})
