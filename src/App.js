@@ -8,6 +8,7 @@ import SIGNUP from './components/SignUpPage/signuppage'
 import HOME from './components/Home/home'
 import POST from './components/Post/Post'
 import REQUEST from './components/Request/requestquestion'
+import UserState from './context/UserState'
 import { BrowserRouter,Routes, Route} from 'react-router-dom';
 
 import './App.css';
@@ -72,6 +73,7 @@ console.log('userDataInformation:', userDataInformation);
 
   return (
     <div>
+      <UserState>
       {isLoggedIn ? 
       
       <div> 
@@ -94,6 +96,7 @@ console.log('userDataInformation:', userDataInformation);
       :
       <LOGIN setIsLoggedIn={handleLogin} signuppage={Gosignuppage} onLoginSuccess={handleLogin}/>
       }
+      </UserState>
     </div>
   )
   

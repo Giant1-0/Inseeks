@@ -4,26 +4,36 @@ const SignUpDetails = require('../models/signup')
 const emailValidator = require('email-validator')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+var userDetailsFetch = require('../middlewares/userDetailsFetch')
 
 const JWT_SECRET  = 'KamalNapoRitik$class1'
 
 router.post('/signupdata', async (req,res) => {
     const {fullname,email,pass,username}=req.body
+    const name = await SignUpDetails.findOne({email: email}) //Why does not work without async await
+    console.log(req.user,"thi this this");
+    const user = await SignUpDetails.findOne({email: email})
 
-    const isEmailExist = await SignUpDetails.findOne({email: email})
-
-    if(isEmailExist){
+    if(user){
         console.log("User already exists")
-        return res.status(409).json({error: 'Conflicting'});
+        res.status(409).json({error: 'Conflicting'});
     } else {
         
         if(emailValidator.validate(email)){
             saveSignUp()            
-            return res.status(200).json({ message: 'User registered successfully' });
+            // const data = {
+            //     user : {
+            //         id: name.id
+            //     }
+            // }
+    
+            // const authToken = jwt.sign(data, JWT_SECRET);
+            // console.log("This is auth token",authToken)
+            res.status(200).json({ message: 'User registered successfully' });
         } 
         else 
         {
-        return res.status(400).json({ error: 'Invalid email account' });    
+        res.status(400).json({ error: 'Invalid email account' });    
         console.log("Unable to save")
         }     
     }
@@ -40,6 +50,8 @@ router.post('/signupdata', async (req,res) => {
             pass: secPass,
             username: username
         })
+
+
     }
 
 })
@@ -68,25 +80,31 @@ router.post('/users',(req,res) => {
 router.post('/login', async (req,res)=>{
     //Axios was not working without the try-catch
     try{
-
     const {email,pass}=req.body;
-        console.log(email, pass);
+    console.log(email, pass);
 
     const name = await SignUpDetails.findOne({email: email}) //Why does not work without async await
 
     if(!name) {
         res.status(404).json({message: 'user not found'});
-        console.log("user did not match")
-
+        console.log("user do not exist")
     }
     const passwordComparison = await bcrypt.compare(pass, name.pass)
     if(!passwordComparison){
         res.status(400).json({message: 'Wrong Password'});
-        console.log("user did not match")
+        console.log("Wrong Password")
     }
     else {
-        res.status(200).json({message: 'user matched',username: name.username});
-        console.log("user matched",name.pass,"Hi")
+        const data = {
+            user : {
+                id: name.id,
+                name: name.fullname
+            }   
+        }
+
+        const authToken = jwt.sign(data, JWT_SECRET);
+        console.log("This is auth token",authToken)
+        res.status(200).json({message: 'user matched',authToken: authToken});
     } 
     
    
@@ -96,6 +114,36 @@ router.post('/login', async (req,res)=>{
 }
 });
 
+// router.post('/getuser', userDetailsFetch,  async (req, res) => {
+//     try {
+//     //   userId = req.user.id;
+//     //   const user = await SignUpDetails.findById(userId).select("-pass")
+     
+//     //   res.send(user)
+//     console.log(req.user)
+//     } catch (error) {
+//       console.error(error.message);
+//       res.status(500)
+//     //   .send("Internal Server Error");
+//     }
+// })
+router.post('/getuser', userDetailsFetch, async (req, res) => {
+    try {
+        // Access the user object from req.user
+        const user = req.user;
+
+        // Check if the user is valid (optional)
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        // Send the user data as the response
+        res.json(user);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 
 
 module.exports = router;

@@ -1,7 +1,10 @@
-import React,{useState} from "react";
+import React,{useState, useContext} from "react";
 import axios from "axios";
+import {useHistory} from 'react-router-dom';
+import userContext from "../../context/userContext";
 
 export default function Loginpage({setIsLoggedIn,signuppage,onLoginSuccess}) {
+  const userData = useContext(userContext);
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
   const [LoginFailMessage, setLoginFailMessage] = useState('none');
@@ -14,10 +17,12 @@ export default function Loginpage({setIsLoggedIn,signuppage,onLoginSuccess}) {
     };
       axios.post('http://localhost:5000/api/login', LogInData)
       .then((response)=> {
-        console.log("Success",response)
+        console.log("Success1234")
           if(response.status === 200){
+            localStorage.setItem('token',response.data.authToken)
             setIsLoggedIn()
             const {message, username} = response.data;
+            console.log(response.data);
             console.log(message);
             console.log(username)
             onLoginSuccess({message,username})

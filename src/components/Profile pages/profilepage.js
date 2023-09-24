@@ -1,13 +1,18 @@
-  import React from 'react'
+  import React,{useState, useEffect, useContext} from 'react'
   import { Link } from 'react-router-dom';
+  import userContext from '../../context/userContext';
 
-  export default function profilepage({username}) {
-    return (
+  export default function Profilepage() {
+
+  const {user} = useContext(userContext);
+  console.log(user);
+
+  return (  
       <div className='profile-page'>
       <div className='user-image-and-name-part'>
               <img src="/images/profile-image.jpeg" alt="" className='user-image'/>
           <div className="users-name">
-              <h1> {username}</h1>
+              <h1> {user.name} </h1>
               <h3>Software Developer | Admin </h3>
           </div>
       </div>
