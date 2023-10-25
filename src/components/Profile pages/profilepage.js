@@ -10,10 +10,10 @@
   return (  
       <div className='profile-page'>
       <div className='user-image-and-name-part'>
-              <img src="/images/profile-image.jpeg" alt="" className='user-image'/>
+              <img src="/images/pp.jpg" alt="" className='user-image'/>
           <div className="users-name">
               <h1> {user.name} </h1>
-              <h3>Software Developer | Admin </h3>
+              <h3> PMO | Admin </h3>
           </div>
       </div>
           <div className="container-for-grid">

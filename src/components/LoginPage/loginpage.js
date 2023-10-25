@@ -19,6 +19,7 @@ export default function Loginpage({setIsLoggedIn,signuppage,onLoginSuccess}) {
       .then((response)=> {
         console.log("Success1234")
           if(response.status === 200){
+            console.log(response)
             localStorage.setItem('token',response.data.authToken)
             setIsLoggedIn()
             const {message, username} = response.data;
