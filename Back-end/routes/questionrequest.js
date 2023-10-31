@@ -7,7 +7,7 @@ const Questions = require('../models/question')
 const multer = require('multer');
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, 'uploads/'); // Define the destination directory where files will be saved
+      cb(null, 'public/uploads'); // Define the destination directory where files will be saved
     },
     filename: function (req, file, cb) {
       cb(null, file.originalname); // Use the original file name as the saved file name
@@ -24,10 +24,11 @@ router.post('/post/questionrequest', upload.single('image'), async (req, res) =>
     const question = new Questions({
         title: title,
         body: body,
-        image: {
-            data: path.join(__dirname+`uploads/${image.originalname}`),
-            contentType: image.mimetype, // Set the content type
-        }
+        // image: {
+        //     data: path.join(__dirname+`./public/uploads/${image.originalname}`),
+        //     contentType: image.mimetype, // Set the content type
+        // }
+        image: image.filename
   
     })
     question.save();

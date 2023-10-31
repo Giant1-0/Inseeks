@@ -55,25 +55,21 @@ function Home({}) {
 
 {questions.toReversed().map((question, index) => (
 <div className="post-home">
-          
-
-
-  
   <div className="post-header-home">
     <img
-      src="./uploads/Fitness.jpeg"
+      src="images/user-image.jpg"
       alt="Person"
       className="person-image-home"
     />
     <div className="post-info-home">
-      <h2>{question.title}</h2>
+      <h2>{question.title} {question.body}</h2>
       <p>Posted by Kammo on August 15, 2023</p>
     </div>
+    
   </div>
   <div className="post-content-home">
-    {/* <h1>Hi{question.image[0].data}</h1> */}
   <img
-      src={`data:${question.image.contentType};base64,${question.image.data.toString('base64')}`}
+      src={`uploads/${question.image}`}
       alt="Post"
       className="post-image-home"
     />
