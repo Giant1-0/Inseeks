@@ -7,7 +7,7 @@ export default function Post(){
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
   const [image, setImage] = useState(null);
-  const [video, setVideo] = useState(null);
+  // const [video, setVideo] = useState(null);
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
@@ -21,17 +21,18 @@ export default function Post(){
     setImage(event.target.files[0]);
   };
 
-  const handleVideoChange = (event) => {
-    setVideo(event.target.files[0]);
-  };
+  // const handleVideoChange = (event) => {
+  //   setVideo(event.target.files[0]);
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const questionDetail = {
-      title : title,
-      body : body
-    }
-    axios.post('http://localhost:5000/post/questionrequest',questionDetail)
+    const formData = new FormData();
+    formData.append('title',title);
+    formData.append('body',body);
+    formData.append('image',image);
+
+    axios.post('http://localhost:5000/post/questionrequest',formData)
     .then((response) => {
       if(response.status == 200) {
         console.log("Success")
@@ -48,7 +49,7 @@ export default function Post(){
 
         </div>
 
-        <form className="form-post" onSubmit={handleSubmit}>
+        <form className="form-post" onSubmit={handleSubmit} encType='multipart/form-data'>
     <div>
       <label htmlFor="title-post">Post Title:</label>
       <input
@@ -73,12 +74,13 @@ export default function Post(){
       <label htmlFor="image-post">Image:</label>
       <input
         type="file"
+        name="image"
         id="image-post"
         accept="image/*"
         onChange={handleImageChange}
       />
     </div>
-    <div>
+    {/* <div>
       <label htmlFor="video-post">Video:</label>
       <input
         type="file"
@@ -86,7 +88,7 @@ export default function Post(){
         accept="video/*"
         onChange={handleVideoChange}
       />
-    </div>
+    </div> */}
     <button className="button-post" type="submit">Submit</button>
   </form>
         

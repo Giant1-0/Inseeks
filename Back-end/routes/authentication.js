@@ -127,6 +127,7 @@ router.post('/login', async (req,res)=>{
 //     //   .send("Internal Server Error");
 //     }
 // })
+
 router.post('/getuser', userDetailsFetch, async (req, res) => {
     try {
         // Access the user object from req.user
@@ -136,7 +137,6 @@ router.post('/getuser', userDetailsFetch, async (req, res) => {
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
-
         // Send the user data as the response
         res.json(user);
     } catch (error) {
@@ -145,5 +145,5 @@ router.post('/getuser', userDetailsFetch, async (req, res) => {
     }
 });
 
-
 module.exports = router;
+
