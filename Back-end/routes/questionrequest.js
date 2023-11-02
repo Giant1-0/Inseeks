@@ -39,7 +39,7 @@ router.get('/questions', async (req, res) => {
     try {
         Questions.deleteMany({});
         const questions = await Questions.find({});
-        console.log(questions)
+        // console.log(questions)
         res.status(200).json(questions);
     } catch (error) {
         console.error(error);

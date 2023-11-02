@@ -131,7 +131,7 @@ router.post('/login', async (req,res)=>{
 router.post('/getuser', userDetailsFetch, async (req, res) => {
     try {
         // Access the user object from req.user
-        const user = req.user;
+        const user = await req.user;
 
         // Check if the user is valid (optional)
         if (!user) {

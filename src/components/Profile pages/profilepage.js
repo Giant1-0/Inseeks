@@ -1,18 +1,41 @@
   import React,{useState, useEffect, useContext} from 'react'
+  import axios from "axios"
   import { Link } from 'react-router-dom';
   import userContext from '../../context/userContext';
 
   export default function Profilepage() {
 
-  const {user} = useContext(userContext);
+  const {user, logout, loading} = useContext(userContext);
   console.log(user);
+  const userInitial = {}; // Initialize user as null
+
+  const [userr, setUser] = useState(userInitial);
+
+  useEffect( () => {
+    const fetchData = async () => {
+
+            const response = await fetch(`http://localhost:5000/api/getuser`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "auth-token": localStorage.getItem('token')
+                },
+            });
+            if (response.ok) {
+              const json = await response.json();
+              console.log(json);
+              setUser(json);
+          }
+        }
+        fetchData();
+}, []);
 
   return (  
       <div className='profile-page'>
       <div className='user-image-and-name-part'>
               <img src="/images/pp.jpg" alt="" className='user-image'/>
           <div className="users-name">
-              <h1> {user.name} </h1>
+              <h1> {userr.name} </h1>
               <h3> PMO | Admin </h3>
           </div>
       </div>

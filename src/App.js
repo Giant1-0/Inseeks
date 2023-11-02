@@ -1,4 +1,5 @@
-import {useState, useEffect} from 'react'
+import {useState, useEffect,useContext} from 'react'
+import userContext from './context/userContext'
 import NAVBAR from './components/common/nav'
 import PROFILEPAGE from './components/Profile pages/profilepage'
 import DASHBOARD from './components/Dashboard/popupdashboard'
@@ -20,6 +21,7 @@ import './SignUp.css'
 
 function App() {
 
+  const {user,logout,loading} = useContext(userContext);
   const [activeComponent, setActiveComponent] =useState(null);
   const [isLoggedIn, setIsLoggedIn] =useState(false);
   const [signedUp, ShowSignedUp] =useState(false);
@@ -42,9 +44,7 @@ function App() {
   const dashToggleButton = () => {
     setActiveComponent((prevComponent) =>
     prevComponent === 'DASHBOARD' ? null : 'DASHBOARD')
-}  
-
-
+  }  
   const Gosignuppage = () => {
     ShowSignedUp(true);
     SetSignupToLoginBack(false);
@@ -59,30 +59,36 @@ function App() {
  const loginpagefromlogoutbutton = () => {
   setIsLoggedIn(false);
   localStorage.removeItem('isLoggedIn')
+  localStorage.clear();
+  //logout();
  }
- const handleLogin = (userData) => {
+ const handleLogin =  (userData) => {
   setIsLoggedIn(true);
   localStorage.setItem('isLoggedIn',true)
   setUserData(userData)
   localStorage.setItem('userDataInformation', JSON.stringify(userData));
   console.log('isLoggedIn:', isLoggedIn);
-console.log('signedUp:', signedUp);
-console.log('userDataInformation:', userDataInformation);
+  console.log('signedUp:', signedUp);
+  console.log('userDataInformation:', userDataInformation);
 
 }
-
+if(loading){
+  return <div>Loading...</div>
+}
+if(!user){
+  return <SIGNUP loginpage={Gologinpage} onSignUpFormSubmit={SignUpComplete}/> 
+}
   return (
     <div>
-      <UserState>
-      {isLoggedIn ? 
-      
+      <>
+      {isLoggedIn ?       
       <div> 
         <BrowserRouter>
         <NAVBAR onDashImageClick={dashToggleButton} loginpage={loginpagefromlogoutbutton}/>
         <Routes>
           <Route path='/' element={<HOME/>}/>
           <Route path='/chat' element={<CHAT/>}/>
-          <Route path='/profile' element={<PROFILEPAGE username={userDataInformation.username}/>}/>
+          <Route path='/profile' element={<PROFILEPAGE/>}/>
           <Route path='/post' element={<POST/>}/>
           <Route path='/requests' element={<REQUEST/>}/>
         </Routes>
@@ -96,7 +102,7 @@ console.log('userDataInformation:', userDataInformation);
       :
       <LOGIN setIsLoggedIn={handleLogin} signuppage={Gosignuppage} onLoginSuccess={handleLogin}/>
       }
-      </UserState>
+      </>
     </div>
   )
   
