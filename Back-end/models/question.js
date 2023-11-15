@@ -2,16 +2,22 @@
   const QuestionSchema = new mongoose.Schema({
       RequestBy: {
           type: mongoose.Schema.Types.ObjectId,
-          ref: 'User'
+          ref: 'SignUp'
         },
       interests: [],
       title: String,
       body: String,
-      // image: {
-      //   data: Buffer,  // Store the image data as a buffer
-      //   contentType: String, // Set the content type, e.g., 'image/jpeg'
-      // }
-      image: String
-    });
+      image: String,
+      answers: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Answer'
+      }],
+      likes: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'SignUp'
+      }]
+    },     
+    {timestamps: true}
+    );
     
     module.exports = mongoose.model('Question', QuestionSchema);

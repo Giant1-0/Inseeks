@@ -35,7 +35,7 @@ export default function Nav({onDashImageClick,loginpage}) {
 
             <ul className='ul-navbar_bottom'>
                 <li><input className='search-text-toggle-bottom' type='text' placeholder='Search'></input></li>
-                <li><button className='navbar-login-button-toggle-bottom'> Log out </button></li>
+                <Link to ="/"><li><button className='navbar-login-button-toggle-bottom' onClick={loginpage}> Log out </button></li> </Link>
             </ul>
       </div>
     </div>

@@ -1,12 +1,9 @@
   import React,{useState, useEffect, useContext} from 'react'
   import axios from "axios"
   import { Link } from 'react-router-dom';
-  import userContext from '../../context/userContext';
 
   export default function Profilepage() {
 
-  const {user, logout, loading} = useContext(userContext);
-  console.log(user);
   const userInitial = {}; // Initialize user as null
 
   const [userr, setUser] = useState(userInitial);

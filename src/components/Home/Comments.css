@@ -1,0 +1,112 @@
+/* outermost container containing all parts of the comment section */
+.comment-container {
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    border: 1px solid rgb(255, 246, 235);
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    background-color: rgb(240, 240, 240);
+    padding: 10px;
+    margin-top: 10px;
+    margin-left: 5%;
+    max-width: 86%;
+}
+.home-page-comment-form{
+    /* background: black; */
+    width: 100%;
+    display: flex;
+}
+.comment-input{
+    margin-right: 10px;
+}
+.button-comment-post{
+    height: 50px;
+    width: 50px;
+    transform: rotate(320deg);
+}
+
+/* individual block for each comment */
+.comment-block-outer {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px 0;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* housing reactions e.g: like button, edit button, etc... */
+.comment-react-inner {
+    display: flex;
+    align-items: center;
+    background-color: rgb(240, 240, 240);
+    border-radius: 5px;
+    font-family: monospace;
+    padding: 5px;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+/* housing comment-react-inner */
+.comment-actions {
+    display: flex;
+    flex-direction: row;
+}
+
+/* container for comment posting */
+.comment-post {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+/* comment input field */
+.comment-input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+/* comment post icon */
+.comment-post i {
+    margin-left: 10px;
+    color: #85a890;
+    margin-right: 10px;
+}
+
+/* applying animation on all icons */
+i{
+    transition: transform .15s;
+    cursor: pointer;
+}
+
+i:hover{
+    transform: scale(1.15);
+}
+
+.comment-input:focus {
+    outline: none;
+    background-color: #cbcbcb37;
+}
+
+.comment-react-inner i {
+    margin-left: 5px;
+    color: rgb(150, 150, 150);
+}
+
+@media screen and (max-width: 480px) {
+
+    .comment-container {
+        max-width: 100%;
+    }
+
+    .comment-input {
+        width: 40%;
+    }
+}

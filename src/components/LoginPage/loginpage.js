@@ -69,7 +69,7 @@ export default function Loginpage({setIsLoggedIn,signuppage,onLoginSuccess}) {
           value={pass}
           onChange={(e)=>setPass(e.target.value)}
           />
-          <button type="submit">Sign-Up</button>
+          <button type="submit">Log-in</button>
         </form>
         <a href="#" className="google-auth">
           <img

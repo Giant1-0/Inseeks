@@ -1,5 +1,4 @@
-import {useState, useEffect,useContext} from 'react'
-import userContext from './context/userContext'
+import {useState, useEffect} from 'react'
 import NAVBAR from './components/common/nav'
 import PROFILEPAGE from './components/Profile pages/profilepage'
 import DASHBOARD from './components/Dashboard/popupdashboard'
@@ -9,7 +8,6 @@ import SIGNUP from './components/SignUpPage/signuppage'
 import HOME from './components/Home/home'
 import POST from './components/Post/Post'
 import REQUEST from './components/Request/requestquestion'
-import UserState from './context/UserState'
 import { BrowserRouter,Routes, Route} from 'react-router-dom';
 
 import './App.css';
@@ -21,7 +19,6 @@ import './SignUp.css'
 
 function App() {
 
-  const {user,logout,loading} = useContext(userContext);
   const [activeComponent, setActiveComponent] =useState(null);
   const [isLoggedIn, setIsLoggedIn] =useState(false);
   const [signedUp, ShowSignedUp] =useState(false);
@@ -71,12 +68,6 @@ function App() {
   console.log('signedUp:', signedUp);
   console.log('userDataInformation:', userDataInformation);
 
-}
-if(loading){
-  return <div>Loading...</div>
-}
-if(!user){
-  return <SIGNUP loginpage={Gologinpage} onSignUpFormSubmit={SignUpComplete}/> 
 }
   return (
     <div>

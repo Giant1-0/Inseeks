@@ -5,6 +5,8 @@ const signUpSchema = new mongoose.Schema({
     email: String,
     pass: String,
     username: String
-})
+},
+{timestamps: true}
+)
 
 module.exports = mongoose.model("SignUp",signUpSchema)
