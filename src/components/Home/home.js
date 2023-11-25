@@ -7,7 +7,6 @@
   import { Link } from 'react-router-dom';
   import io from 'socket.io-client';
 
-
   import InterestsPopup from './Interest';
   import "./home.css";
   import "./Comments.css"
@@ -243,7 +242,8 @@ useEffect(() => {
         className="person-image-home"
       />
       <div className="post-info-home">
-        <h2>{question.title} {question.body}</h2>
+        <h2>{question.title}</h2>
+        {/* <h4>{question.body}</h4> */}
         <p>{question.RequestBy && (<>Posted by {question.RequestBy.fullname}</>
           )} on {formatDate(question.createdAt)}</p>
       </div>
@@ -255,7 +255,9 @@ useEffect(() => {
         alt="Post"
         className="post-image-home"
       />
-     <div className='like-and-count'> 
+      <p>
+        {question.body}...
+        <div className='like-and-count'> 
      <span className='counting-like'> {question.likesCount}</span>
      {
       likes[question._id]?      
@@ -275,10 +277,9 @@ useEffect(() => {
       </IconButton>
       </>
      }
+     
      </div>
-      <p>
-        {question.body}...
-        {showMore && (
+             {showMore && (
           <>
             <span>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -373,7 +374,6 @@ useEffect(() => {
       <button className="button-home" onClick={toggleContent}>
         {showMore ? "Read Less" : "Read More"}
       </button> 
-
     </div>
   </div>
   ))}

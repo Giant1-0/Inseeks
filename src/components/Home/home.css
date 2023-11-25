@@ -58,6 +58,7 @@
   
   .post-info-home {
     flex: 1;
+    /* position: relative; */
 
   }
   
@@ -67,14 +68,14 @@
     margin-bottom: 10px;
   }
   .like-and-count{
-    position: absolute;
-    right: 0;
-    margin-right: 49vh;
+    /* margin-right: 40vh; */
     color: #8CD6B1;
     width: 100px;
     display: flex;
     align-items: center;
-    margin-top: 40px;
+    margin-top: 0vh;
+    margin-left: 90vh;
+    display: inline-block;
     /* background-color: #010101; */
   }
   .counting-like{

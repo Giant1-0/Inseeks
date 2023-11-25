@@ -26,7 +26,6 @@ router.post('/signupdata', async (req,res) => {
             //         id: name.id
             //     }
             // }
-    
             // const authToken = jwt.sign(data, JWT_SECRET);
             // console.log("This is auth token",authToken)
             res.status(200).json({ message: 'User registered successfully' });
@@ -132,7 +131,6 @@ router.post('/getuser', userDetailsFetch, async (req, res) => {
     try {
         // Access the user object from req.user
         const user = await req.user;
-
         // Check if the user is valid (optional)
         if (!user) {
             return res.status(404).json({ message: 'User not found' });

@@ -5,6 +5,13 @@ import axios from 'axios';
 export default function Requestquestion() {
   const [questions, setQuestions] = useState([]);
 
+    /*Date format logic*/
+    function formatDate(timestamp) {
+      const date = new Date(timestamp);
+      return `${(date.getMonth() + 1)}/${date.getDate()}/${date.getFullYear()}, ` +
+        `${(date.getHours() % 12 || 12)}:${String(date.getMinutes()).padStart(2, '0')} ${date.getHours() < 12 ? 'am' : 'pm'}`;
+    }
+
 useEffect(()=>{
       axios.get('http://localhost:5000/questions')
       .then((response) => {
@@ -26,8 +33,8 @@ useEffect(()=>{
             <h3 className='question-number'> {index + 1} </h3>
             <p className='question'> {question.title}</p>
                   <div className="requestedby">
-                  <h4 className="Asked-By"> Question by, Napoleon D R Dutta</h4>
-                  <p className="Date-Asked"> Date: 1:28 pm 24/08/2023 </p>
+                  <h4>{question.RequestBy && (<>Posted by {question.RequestBy.fullname}</>
+          )} on {formatDate(question.createdAt)}</h4>
                   </div>
 
             </div>

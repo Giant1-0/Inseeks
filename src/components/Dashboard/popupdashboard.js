@@ -16,7 +16,7 @@ const PopupWindow = () => {
                 </tr>
                 <tr>
                   <td><img className="popup-img" src="/images/user-image.png" alt="" /></td>
-                  <td><p>Kamallochan</p></td>
+                  <td><p>Kamal</p></td>
                   <td><p className="star">4</p></td>
                 </tr>
                 <tr>

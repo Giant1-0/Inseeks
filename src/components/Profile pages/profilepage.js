@@ -30,7 +30,7 @@
   return (  
       <div className='profile-page'>
       <div className='user-image-and-name-part'>
-              <img src="/images/pp.jpg" alt="" className='user-image'/>
+              <img src="/images/profile_image_placeholder.jpg" alt="" className='user-image'/>
           <div className="users-name">
               <h1> {userr.name} </h1>
               <h3> PMO | Admin </h3>
