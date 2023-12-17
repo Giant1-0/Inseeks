@@ -4,14 +4,16 @@
 
   export default function Profilepage() {
 
+    const url = "localhost"
+  //localhost
+
   const userInitial = {}; // Initialize user as null
 
   const [userr, setUser] = useState(userInitial);
 
   useEffect( () => {
     const fetchData = async () => {
-
-            const response = await fetch(`http://localhost:5000/api/getuser`, {
+            const response = await fetch(`http://${url}:5000/api/getuser`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

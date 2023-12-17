@@ -9,13 +9,16 @@ export default function Loginpage({setIsLoggedIn,signuppage,onLoginSuccess}) {
   const [pass, setPass] = useState('');
   const [LoginFailMessage, setLoginFailMessage] = useState('none');
 
+  const url = "localhost"
+  //localhost
+
   const handleLogin = (e) => {
     e.preventDefault();
      const LogInData = {
       email : email,
       pass : pass,
     };
-      axios.post('http://localhost:5000/api/login', LogInData)
+      axios.post(`http://${url}:5000/api/login`, LogInData)
       .then((response)=> {
         console.log("Success1234")
           if(response.status === 200){

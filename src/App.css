@@ -140,6 +140,7 @@ a{
   }
   .div-navbar{
     padding-left: 12px; /*This padding is for the content giant*/
+    width: 47vh;
   }
   .search-text{
     display: none;
@@ -148,10 +149,11 @@ a{
     display: none;
   }
   .toggle-button-on-nav-bar{
-    margin-left: 110px;
+    margin-left: 90px;
   }
   .ToggleDiv{
     display: block; /*Display block is for making the div visible*/
+    margin-top: 100px;
     width: 100%;
     animation-name: slideFromRight;
 

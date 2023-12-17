@@ -12,6 +12,9 @@
   import "./Comments.css"
   function Home({}) {
 
+    const url = "localhost";
+
+    //localhost
     /*Displaying the questions*/
     const [questions, setQuestions] = useState([]);
     const [comments, setComments] = useState([]);
@@ -20,13 +23,11 @@
     // const [like, setLike] = useState(false);
     const [likes, setLikes] = useState({});
 
-
-
     useEffect(()=>{
-      axios.get('http://localhost:5000/questions')
+      axios.get(`http://${url}:5000/questions`)
       .then((response) => {
             setQuestions(response.data);
-            console.log("hey hey hey",response.data)
+            console.log("Response Data",response.data)
       })
       .catch((error) => {
             console.error('Error fetching the questions', error)
@@ -34,7 +35,6 @@
   }, []);
 
   /*To get the comments*/
- 
     /*Toggle Logic*/
     const [showMore, setShowMore] = useState(false);
     const toggleContent = () => {
@@ -64,8 +64,8 @@
     const [userr, setUser] = useState(userInitial);
     const user = userr.id
     useEffect( () => {
-      const fetchData = async () => {
-              const response = await fetch(`http://localhost:5000/api/getuser`, {
+      const fetchDatae = async () => {
+              const response = await fetch(`http://${url}:5000/api/getuser`, {
                   method: "POST",
                   headers: {
                       "Content-Type": "application/json",
@@ -78,7 +78,7 @@
                 setUser(json);
             }
           }
-          fetchData();
+          fetchDatae();
   }, []);
 
 
@@ -98,7 +98,7 @@
 // Function to fetch updated like count for a specific question
 const fetchUpdatedLikeCount = async (postId) => {
   try {
-    const response = await axios.get(`http://localhost:5000/post/likeCount/${postId}`);
+    const response = await axios.get(`http://${url}:5000/post/likeCount/${postId}`);
     console.log('count is', response.data)
     return response.data; // Assuming the server returns likeCount in the response
   } catch (error) {
@@ -107,9 +107,10 @@ const fetchUpdatedLikeCount = async (postId) => {
   }
 };
 
-
+  //receiving the postId in this function
   const toggleLike = async (postId) => {
-    const isLiked = likes[postId] || false;
+    const isLiked = likes[postId] || false; //It is a logical OR operator, attemps to get likes based on key postId
+    //true is likes[postId] exists
     console.log("checking out",isLiked)
 
     const userDetails ={
@@ -118,16 +119,17 @@ const fetchUpdatedLikeCount = async (postId) => {
       trueOrFalse: isLiked //false means liked, true means disliked
     }
 try {
-    await axios.post('http://localhost:5000/post/like',userDetails)
+  //inserting uid in Questions.likes if isLiked false, deleting remove uid from Question.likes isLiked is true.
+    await axios.post(`http://${url}:5000/post/like`,userDetails)
     .then((response)=>{
       console.log(response)
     }).catch((err)=>{
       console.log(err)
     })
-    const updatedLikeCount = await fetchUpdatedLikeCount(postId);
+    const updatedLikeCount = await fetchUpdatedLikeCount(postId); //getting the likecount
 
-    setLikes((prevLikes) => {
-      const updatedLikes = { ...prevLikes };
+    setLikes((prevLikes) => { 
+      const updatedLikes = { ...prevLikes }; 
       updatedLikes[postId] = !updatedLikes[postId];
       updateLocalStorage(updatedLikes); // Update local storage with updated liked posts
       return updatedLikes;
@@ -135,7 +137,7 @@ try {
         // Update the question's like count in state
         setQuestions((prevQuestions) =>
         prevQuestions.map((question) =>
-          question._id === postId ? { ...question, likesCount: updatedLikeCount } : question
+          question._id === postId ? { ...question, likesCount: updatedLikeCount } : question //if does not match then would return the 'question' object
         )
       );
     } catch (error) {
@@ -160,7 +162,7 @@ useEffect(() => {
 
     /*Socket Connecton*/
     useEffect(() => {
-      const socketInstance = io('http://localhost:5000');
+      const socketInstance = io(`http://${url}:5000`);
       setSocket(socketInstance);
     
       // listen for events emitted by the server
@@ -191,7 +193,7 @@ useEffect(() => {
     };
     const fetchComments = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/comments/${currId}`); // Replace with your API endpoint for fetching comments
+        const response = await axios.get(`http://${url}:5000/comments/${currId}`); // Replace with your API endpoint for fetching comments
         if (response.status === 200) {
           setComments(response.data);
 
@@ -212,7 +214,7 @@ useEffect(() => {
       // fetchComments();
       socket.emit('chat message',commentdetail)
       
-      axios.post('http://localhost:5000/post/comment',commentdetail)
+      axios.post(`http://${url}:5000/post/comment`,commentdetail)
       .then((response) => {
         if(response.status == 200) {
           // console.log("Success")
@@ -244,7 +246,7 @@ useEffect(() => {
       <div className="post-info-home">
         <h2>{question.title}</h2>
         {/* <h4>{question.body}</h4> */}
-        <p>{question.RequestBy && (<>Posted by {question.RequestBy.fullname}</>
+        <p className='home-posted-by'>{question.RequestBy && (<>Posted by {question.RequestBy.fullname}</>
           )} on {formatDate(question.createdAt)}</p>
       </div>
       
@@ -256,10 +258,13 @@ useEffect(() => {
         className="post-image-home"
       />
       <p>
-        {question.body}...
+        {/* {question.body}... */}
         <div className='like-and-count'> 
+    {/* likecount is a property we made at sent it here from server side after fetching likes count */}
      <span className='counting-like'> {question.likesCount}</span>
      {
+
+      //if in the likes json question._id exists then it is true, otherwise it is false
       likes[question._id]?      
       <>
       <IconButton 
@@ -282,21 +287,7 @@ useEffect(() => {
              {showMore && (
           <>
             <span>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-            do eiusmod tempor incididunt ut labore et dolore magna
-            aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-            ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            Duis aute irure dolor in reprehenderit in voluptate velit
-            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-            occaecat cupidatat non proident, sunt in culpa qui officia
-            deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-            do eiusmod tempor incididunt ut labore et dolore magna
-            aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-            ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            Duis aute irure dolor in reprehenderit in voluptate velit
-            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-            occaecat cupidatat non proident, sunt in culpa qui officia
-            deserunt mollit anim id est laborum.
+             {question.body}
           </span>
     <div className='comment-container'>
     <div className='comment-post'>

@@ -55,7 +55,6 @@ router.post('/signupdata', async (req,res) => {
 
 })
 
-
 router.post('/users',(req,res) => {
     const {name, email, suggestion, message} = req.body
     console.log(name,"Hi")
@@ -112,20 +111,6 @@ router.post('/login', async (req,res)=>{
     res.status(500).json({error: 'An error occured'})
 }
 });
-
-// router.post('/getuser', userDetailsFetch,  async (req, res) => {
-//     try {
-//     //   userId = req.user.id;
-//     //   const user = await SignUpDetails.findById(userId).select("-pass")
-     
-//     //   res.send(user)
-//     console.log(req.user)
-//     } catch (error) {
-//       console.error(error.message);
-//       res.status(500)
-//     //   .send("Internal Server Error");
-//     }
-// })
 
 router.post('/getuser', userDetailsFetch, async (req, res) => {
     try {

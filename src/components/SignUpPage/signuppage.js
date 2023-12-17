@@ -11,7 +11,8 @@ export default function SignUpPage({loginpage,onSignUpFormSubmit}) {
   const [popUpSuccess, setpopUpSuccess] = useState('none');
   const [popUpEmailAlExists, setpopUpEmailAlExists] = useState('none');
 
-
+  const url = "localhost"
+  //localhost
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -21,7 +22,7 @@ export default function SignUpPage({loginpage,onSignUpFormSubmit}) {
       pass : pass,
       username : username
     };
-      axios.post('http://localhost:5000/api/signupdata', SignUpData)
+      axios.post(`http://${url}:5000/api/signupdata`, SignUpData)
       .then((response)=> {
       
           console.log('Success', response)

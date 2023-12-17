@@ -144,31 +144,59 @@
     color: darkred;
   }
   
-  @media (max-width: 768px) {
+  @media (max-width: 480px) {
+    .left-sidebar-home{
+      display: none;
+    }
+    .like-and-count{
+      margin-left: 33vh
+    }
     .left-sidebar-home{
       display: none;
     }
     .main-content-home {
-      width: 120%;
-      margin-left: 30px;
-    
+      width:44.4vh;
+      padding: 6px;
+      margin-right: 1px;
+      overflow-x: hidden;
+      margin-left: 6px;
     }
     .right-sidebar-home {
       display: none;
     }
-    .interest-home{
-      padding-left: 0px;
+    .post-home{
+      width: 40vh;
+      border: 1px solid #ccc;
+      margin: 1px;
+      padding-right: 10px;
+      padding-right: 10px;
+      padding-left: 18px;
+      padding-top: 2px;
+    }
+    .post-header-home{
+      margin-top: -5px;
+    }
+    .person-image-home{
+      margin-bottom: 22px;
+      margin-left: -10px;
+    }
+    .post-image-home{
+      margin-left: -4px;
+    }
+    .home-posted-by{
+      margin-left: 0;
+      font-size: small;
+      margin-top: -8px;
+      margin-left: -18px;
     }
   }
 
-  @media (max-width: 600px) {
+  /* @media (max-width: 600px) {
     .left-sidebar-home{
       display: none;
     }
     .main-content-home {
       width: 115%;
-      margin-left: 15px;
-      
-    
+      margin-left: 6px;   
     }
-  }
+  } */

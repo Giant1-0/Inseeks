@@ -3,6 +3,8 @@ import './request.css';
 
 import axios from 'axios';
 export default function Requestquestion() {
+      const url = "localhost"
+      //localhost
   const [questions, setQuestions] = useState([]);
 
     /*Date format logic*/
@@ -13,7 +15,7 @@ export default function Requestquestion() {
     }
 
 useEffect(()=>{
-      axios.get('http://localhost:5000/questions')
+      axios.get(`http://${url}:5000/questions`)
       .then((response) => {
             setQuestions(response.data);
             console.log(response.data)

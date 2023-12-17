@@ -30,7 +30,7 @@ export default function Nav({onDashImageClick,loginpage}) {
                 <li><img className="dashboard-image" src="/images/dashboard.png" alt="" /><a href="#">Dashboard</a></li>
                 {/* <li><img className="chatoption-image" src="/images/chatoption.png" alt="" /><a href="#">Chat</a></li> */}
                 <li><i class="fa-solid fa-bell" id='thebell-icon'></i><a href="#">Notification</a></li>
-                <li><i class="fa-solid fa-user" id='theprofile-icon'></i><a href="#">Profile</a></li>
+                <Link to ="/profile"><li><i class="fa-solid fa-user" id='theprofile-icon'></i><a href="#">Profile</a></li></Link>
                 </ul>
 
             <ul className='ul-navbar_bottom'>

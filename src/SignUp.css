@@ -136,6 +136,8 @@
 
     .container-signup {
         flex-direction: column;
+        width: 95%;
+        height: 80%;
     }
 
     .form-container-signup {

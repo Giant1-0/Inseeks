@@ -7,6 +7,7 @@ import axios from 'axios';
 import './Post.css';
 //http://localhost:5000/api/login
 export default function Post(){
+  const url = "localhost";
 
   const navigate = useNavigate();
 
@@ -17,32 +18,38 @@ export default function Post(){
 
   const userInitial = {}; // Initialize user as null
 
+  // Inside your component
+  const [uid, setUid] = useState(null); // Initialize uid as null
   const [userr, setUser] = useState(userInitial);
 
-
+  //localhost
 
   useEffect( () => {
     const fetchData = async () => {
-
-            const response = await fetch(`http://localhost:5000/api/getuser`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "auth-token": localStorage.getItem('token')
-                },
-            });
-            if (response.ok) {
-              const json = await response.json();
-              console.log(json);
-              setUser(json);
-          }
+      try {
+        const response = await fetch(`http://${url}:5000/api/getuser`, {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+              "auth-token": localStorage.getItem('token')
+          },
+      });
+      if (response.ok) {
+        const json = await response.json();
+        console.log(json);
+        setUser(json);
+        setUid(json.id);
+    }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
         }
+       
         fetchData();
 }, []);
 
 
 
-  const uid = userr.id;
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
@@ -75,7 +82,7 @@ export default function Post(){
     }
     try {
       const response = await axios.post(
-        'http://localhost:5000/post/questionrequest',
+        `http://${url}:5000/post/questionrequest`,
         formData,
         {
           headers: {
